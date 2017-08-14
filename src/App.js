@@ -75,13 +75,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Barnanavn</h2>
-        </div>
+        <h1>Barnanavn</h1>
         <h3>{this.showName()}</h3>
-        <button onClick={this.rejectName}>Ódáma</button>
-        <button onClick={this.acceptName}>Dáma</button>
+        <button className="button is-danger" onClick={this.rejectName}>Ódáma</button>
+        <button className="button is-success" onClick={this.acceptName}>Dáma</button>
         <h4>{this.progress()}%</h4>
         <ul>
           <li>jjj</li>
