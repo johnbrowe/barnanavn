@@ -10,24 +10,24 @@ class App extends Component {
     // State
     this.state = {
       names: [
-        "Absalon (Absalon, Absaloni, Absalons)",
-        "Adolf [a:d-] (Adolf, Adolfi, Adolfs)",         
-        "Adrian[a:d-] (Adrian, Adriani, Adrians)",
-        "Adriel(Adriel, Adrieli, Adriels)",
-        "Aðalgeir(Aðalgeir, Aðalgeiri, Aðalgeirs)",
-        "Aðalstein(Aðalstein, Aðalsteini, Aðalsteins)",
-        "Aggusteinus(Aggusteinus, Aggusteinusi, Aggusteinusar*)",
-        "Agnar (Agnar, Agnari, Agnars)",
-        "Aksal(Aksal, Aksali, Aksals)",
-        "Aksel(Aksel, Akseli, Aksels)",
-        "Albert(Albert, Alberti, Alberts)",
-        "Albin(Albin, Albini, Albins)",
-        "Aleks[a:l-] (Aleks, Aleksi, Aleks)",
-        "Aleksandur[-'s-] (Aleksandur, Aleksanduri, Aleksandurs)",
-        "Alfred(Alfred, Alfredi, Alfreds)",
-        "Allan[-l:-] (Allan, Allani, Allans)",
-        "Alvi (Alva, Alva, Alva)",
-        "Amadeus [-'d-] (Amadeus, Amadeusi, Amadeusar*)"
+        { "name": "Absalon", "description": "(Absalon, Absaloni, Absalons)" },
+        { "name": "Adolf", "description": "[a:d-] (Adolf, Adolfi, Adolfs)" },         
+        { "name": "Adrian", "description": "[a:d-] (Adrian, Adriani, Adrians)" },
+        { "name": "Adriel", "description": "(Adriel, Adrieli, Adriels)" },
+        { "name": "Aðalgeir", "description": "(Aðalgeir, Aðalgeiri, Aðalgeirs)" },
+        { "name": "Aðalstein", "description": "(Aðalstein, Aðalsteini, Aðalsteins)" },
+        { "name": "Aggusteinus", "description": "(Aggusteinus, Aggusteinusi, Aggusteinusar*)" },
+        { "name": "Agnar", "description": "(Agnar, Agnari, Agnars)" },
+        { "name": "Aksal", "description": "(Aksal, Aksali, Aksals)" },
+        { "name": "Aksel", "description": "(Aksel, Akseli, Aksels)" },
+        { "name": "Albert", "description": "(Albert, Alberti, Alberts)" },
+        { "name": "Albin", "description": "(Albin, Albini, Albins)" },
+        { "name": "Aleks", "description": "[a:l-] (Aleks, Aleksi, Aleks)" },
+        { "name": "Aleksandur", "description": "[-'s-] (Aleksandur, Aleksanduri, Aleksandurs)" },
+        { "name": "Alfred", "description": "(Alfred, Alfredi, Alfreds)" },
+        { "name": "Allan", "description": "[-l:-] (Allan, Allani, Allans)" },
+        { "name": "Alvi", "description": "(Alva, Alva, Alva)" },
+        { "name": "Amadeus", "description": "[-'d-] (Amadeus, Amadeusi, Amadeusar*)" }
       ],
       accepted: [],
       rejected: [],
@@ -40,6 +40,7 @@ class App extends Component {
     this.showName = this.showName.bind(this);
     this.increment = this.increment.bind(this);
     this.progress = this.progress.bind(this);
+    this.isFinished = this.isFinished.bind(this);
   }
 
   rejectName() {
@@ -61,14 +62,24 @@ class App extends Component {
   }
 
   progress() {
-    return ((this.state.currentNameIndex + 1) * 100) / (this.state.names.length); 
+    return (this.state.currentNameIndex + 1) + "/" + this.state.names.length
+  }
+
+  isFinished() {
+    return (this.state.currentNameIndex + 1) > this.state.names.length
   }
 
   showName() {
-    if (this.progress() <= 100) {
-      return this.state.names[this.state.currentNameIndex];
+    if (!this.isFinished()) {
+      return this.state.names[this.state.currentNameIndex].name
     } else {
-      return "Onki navn eftir";
+      return "Onki navn eftir"
+    }
+  }
+
+  showDescription() {
+    if (!this.isFinished()) {
+      return this.state.names[this.state.currentNameIndex].description
     }
   }
 
@@ -76,13 +87,22 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Barnanavn</h1>
-        <h3>{this.showName()}</h3>
-        <button className="button is-danger" onClick={this.rejectName}>Ódáma</button>
-        <button className="button is-success" onClick={this.acceptName}>Dáma</button>
-        <h4>{this.progress()}%</h4>
+        <br />
+        <p><b>{ this.showName() }</b></p>
+        <p><small><i>{ this.showDescription() }</i></small></p>
+        <br />
+        <br />
+        <p>{ this.progress() }</p>
+        <button className="button is-danger" disabled={this.isFinished()} onClick={this.rejectName}>Ódáma</button>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <button className="button is-success" disabled={this.isFinished()} onClick={this.acceptName}>Dáma</button>
+        <br />
+        <br />
         <ul>
-          <li>jjj</li>
-          {this.state.accepted.map((data) => <li>{this.state.names[data]}</li>)}
+          <li><b>Dáma nøvn:</b></li>
+          {this.state.accepted.map((data) => <li>{this.state.names[data].name}</li>)}
         </ul>
       </div>
     );
