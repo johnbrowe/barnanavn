@@ -41,6 +41,7 @@ class App extends Component {
     this.increment = this.increment.bind(this);
     this.progress = this.progress.bind(this);
     this.isFinished = this.isFinished.bind(this);
+    this.noneSelectedYetMsg = this.noneSelectedYetMsg.bind(this);
   }
 
   rejectName() {
@@ -83,6 +84,14 @@ class App extends Component {
     }
   }
 
+  noneSelectedYetMsg(){
+    if(this.state.accepted.length == 0){
+      return "Onki navn dáma enn"    
+    } else {
+      return "";
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -102,6 +111,7 @@ class App extends Component {
         <br />
         <ul>
           <li><b>Dáma nøvn:</b></li>
+          { this.noneSelectedYetMsg() }
           {this.state.accepted.map((data) => <li>{this.state.names[data].name}</li>)}
         </ul>
       </div>
