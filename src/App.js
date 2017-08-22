@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import names from './data/names.json';
 
 class App extends Component {
 
@@ -9,26 +10,7 @@ class App extends Component {
 
     // State
     this.state = {
-      names: [
-        { "name": "Absalon", "description": "(Absalon, Absaloni, Absalons)" },
-        { "name": "Adolf", "description": "[a:d-] (Adolf, Adolfi, Adolfs)" },         
-        { "name": "Adrian", "description": "[a:d-] (Adrian, Adriani, Adrians)" },
-        { "name": "Adriel", "description": "(Adriel, Adrieli, Adriels)" },
-        { "name": "Aðalgeir", "description": "(Aðalgeir, Aðalgeiri, Aðalgeirs)" },
-        { "name": "Aðalstein", "description": "(Aðalstein, Aðalsteini, Aðalsteins)" },
-        { "name": "Aggusteinus", "description": "(Aggusteinus, Aggusteinusi, Aggusteinusar*)" },
-        { "name": "Agnar", "description": "(Agnar, Agnari, Agnars)" },
-        { "name": "Aksal", "description": "(Aksal, Aksali, Aksals)" },
-        { "name": "Aksel", "description": "(Aksel, Akseli, Aksels)" },
-        { "name": "Albert", "description": "(Albert, Alberti, Alberts)" },
-        { "name": "Albin", "description": "(Albin, Albini, Albins)" },
-        { "name": "Aleks", "description": "[a:l-] (Aleks, Aleksi, Aleks)" },
-        { "name": "Aleksandur", "description": "[-'s-] (Aleksandur, Aleksanduri, Aleksandurs)" },
-        { "name": "Alfred", "description": "(Alfred, Alfredi, Alfreds)" },
-        { "name": "Allan", "description": "[-l:-] (Allan, Allani, Allans)" },
-        { "name": "Alvi", "description": "(Alva, Alva, Alva)" },
-        { "name": "Amadeus", "description": "[-'d-] (Amadeus, Amadeusi, Amadeusar*)" }
-      ],
+      names: names,
       accepted: [],
       rejected: [],
       currentNameIndex: 0
@@ -78,9 +60,9 @@ class App extends Component {
     }
   }
 
-  showDescription() {
+  showDesc() {
     if (!this.isFinished()) {
-      return this.state.names[this.state.currentNameIndex].description
+      return this.state.names[this.state.currentNameIndex].desc
     }
   }
 
@@ -98,10 +80,10 @@ class App extends Component {
         <h1>Barnanavn</h1>
         <br />
         <p><b>{ this.showName() }</b></p>
-        <p><small><i>{ this.showDescription() }</i></small></p>
-        <br />
+        <p><small><i>{ this.showDesc() }</i></small></p>
         <br />
         <p>{ this.progress() }</p>
+        <br />  
         <button className="button is-danger" disabled={this.isFinished()} onClick={this.rejectName}>Ódáma</button>
         &nbsp;
         &nbsp;
