@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "lodash": "^4.17.4",
     "react": "^15.6.1",
+    "react-css-transition-replace": "^2.2.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.11"
+    "react-icons": "^2.2.5",
+    "react-scripts": "1.0.11",
+    "react-transition-group": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

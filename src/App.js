@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import names from './data/names.json';
+import _ from 'lodash';
+import { CSSTransitionGroup } from 'react-transition-group'
+import ReactCSSTransitionReplace from 'react-css-transition-replace';
+import MdCheck from 'react-icons/lib/md/check';
+import MdClear from 'react-icons/lib/md/clear';
 
 class App extends Component {
 
@@ -10,7 +15,7 @@ class App extends Component {
 
     // State
     this.state = {
-      names: names,
+      names: _.shuffle(names),
       accepted: [],
       rejected: [],
       currentNameIndex: 0
@@ -20,6 +25,7 @@ class App extends Component {
     this.rejectName = this.rejectName.bind(this);
     this.acceptName = this.acceptName.bind(this);
     this.showName = this.showName.bind(this);
+    this.showID = this.showID.bind(this);
     this.increment = this.increment.bind(this);
     this.progress = this.progress.bind(this);
     this.isFinished = this.isFinished.bind(this);
@@ -45,11 +51,19 @@ class App extends Component {
   }
 
   progress() {
-    return (this.state.currentNameIndex + 1) + "/" + this.state.names.length
+    return (this.state.currentNameIndex + 1) + "/" + (this.state.names.length + 1);
   }
 
   isFinished() {
     return (this.state.currentNameIndex + 1) > this.state.names.length
+  }
+
+  showID() {
+    if (!this.isFinished()) {
+      return this.state.names[this.state.currentNameIndex].id
+    } else {
+      return "Onki navn eftir"
+    }
   }
 
   showName() {
@@ -77,24 +91,51 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Barnanavn</h1>
+        <ReactCSSTransitionReplace
+          transitionName="fade-wait"
+          transitionEnterTimeout={600} 
+          transitionLeaveTimeout={600}>
+          <h1 key={this.showID()}>{this.showName()}</h1>
+        </ReactCSSTransitionReplace>
+
+        <ReactCSSTransitionReplace
+          transitionName="fade-wait"
+          transitionEnterTimeout={600} 
+          transitionLeaveTimeout={600}>
+          <p key={this.showID()}><small><i>{this.showDesc()}</i></small></p>
+        </ReactCSSTransitionReplace>
+
         <br />
-        <p><b>{ this.showName() }</b></p>
-        <p><small><i>{ this.showDesc() }</i></small></p>
+        <p>
+          <span key={this.progress()}>{this.progress()}</span>
+        
+        </p>
         <br />
-        <p>{ this.progress() }</p>
-        <br />  
-        <button className="button is-danger" disabled={this.isFinished()} onClick={this.rejectName}>Ódáma</button>
+        <button className="button is-large is-danger" disabled={this.isFinished()} onClick={this.rejectName}>
+        <MdClear></MdClear>
+        </button>
         &nbsp;
         &nbsp;
         &nbsp;
-        <button className="button is-success" disabled={this.isFinished()} onClick={this.acceptName}>Dáma</button>
+        <button className="button is-large is-success" disabled={this.isFinished()} onClick={this.acceptName}>
+        <MdCheck></MdCheck>
+        </button>
         <br />
         <br />
         <ul>
-          <li><b>Dáma nøvn:</b></li>
-          { this.noneSelectedYetMsg() }
-          {this.state.accepted.map((data) => <li>{this.state.names[data].name}</li>)}
+
+          <li><b>Vald nøvn:</b></li>
+          {this.noneSelectedYetMsg()}
+          {this.state.accepted.map((data, i) => {
+
+            return <CSSTransitionGroup
+              transitionName="example"
+              transitionEnterTimeout={1000}
+              transitionLeaveTimeout={900}><li key={this.state.names[data].id}>
+                {this.state.names[data].name}
+              </li>
+            </CSSTransitionGroup>
+          })}
         </ul>
       </div>
     );
