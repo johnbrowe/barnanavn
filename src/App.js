@@ -7,6 +7,9 @@ import { CSSTransitionGroup } from 'react-transition-group'
 import ReactCSSTransitionReplace from 'react-css-transition-replace';
 import MdCheck from 'react-icons/lib/md/check';
 import MdClear from 'react-icons/lib/md/clear';
+import MdBack from 'react-icons/lib/md/keyboard-arrow-left';
+import FaFemale from 'react-icons/lib/fa/female';
+import FaMale from 'react-icons/lib/fa/male';
 
 class App extends Component {
 
@@ -16,9 +19,11 @@ class App extends Component {
     // State
     this.state = {
       names: _.shuffle(names),
-      accepted: [],
-      rejected: [],
-      currentNameIndex: 0
+      originalNamesLength: names.length,
+      accepted: (typeof localStorage["acceptedNames"] != "undefined") ? JSON.parse(localStorage.getItem('acceptedNames')) : [],
+      rejected: (typeof localStorage["rejectedNames"] != "undefined") ? JSON.parse(localStorage.getItem('rejectedNames')) : [],
+      currentNameIndex: 0,
+      gender: null
     };
 
     // Bindings
@@ -30,15 +35,56 @@ class App extends Component {
     this.progress = this.progress.bind(this);
     this.isFinished = this.isFinished.bind(this);
     this.noneSelectedYetMsg = this.noneSelectedYetMsg.bind(this);
+    this.handleAllAcceptedNames = this.handleAllAcceptedNames.bind(this);
+    this.isAlreadyAccepted = this.isAlreadyAccepted.bind(this);
+    this.restart = this.restart.bind(this);
+    this.selectGender = this.selectGender.bind(this);
+
+    this.handleAllAcceptedNames();
+    this.handleAllRejectedNames();
+  }
+
+  handleAllAcceptedNames() {
+    if(this.state.accepted.length > 0){
+      this.state.names = this.state.names.filter((obj) => {
+        return this.isAlreadyAccepted(obj.id);        
+      });  
+    }
+  }
+
+  isAlreadyAccepted(id){
+    let result = this.state.accepted.some((obj) => {
+      return obj.id === id;  
+    });
+
+    return !result;
+  }
+  
+  handleAllRejectedNames() {
+    if(this.state.rejected.length > 0){
+      this.state.names = this.state.names.filter((obj) => {
+        return this.isAlreadyRejected(obj.id);        
+      });  
+    }
+  }
+
+  isAlreadyRejected(id){
+    let result = this.state.rejected.some((obj) => {
+      return obj.id === id;  
+    });
+
+    return !result;
   }
 
   rejectName() {
-    this.state.rejected.push(this.state.currentNameIndex);
+    this.state.rejected.push(this.state.names[this.state.currentNameIndex]);
+    localStorage.setItem('rejectedNames', JSON.stringify(this.state.rejected));
     this.increment();
   }
 
   acceptName() {
-    this.state.accepted.push(this.state.currentNameIndex);
+    this.state.accepted.push(this.state.names[this.state.currentNameIndex]);
+    localStorage.setItem('acceptedNames', JSON.stringify(this.state.accepted));
     this.increment();
   }
 
@@ -51,7 +97,7 @@ class App extends Component {
   }
 
   progress() {
-    return (this.state.currentNameIndex + 1) + "/" + (this.state.names.length + 1);
+    return ((this.state.accepted.length + this.state.rejected.length) + 1)  + "/" + (this.state.originalNamesLength + 1);
   }
 
   isFinished() {
@@ -82,62 +128,98 @@ class App extends Component {
 
   noneSelectedYetMsg(){
     if(this.state.accepted.length == 0){
-      return "Onki navn dáma enn"    
+      return "Onki navn"    
     } else {
       return "";
     }
   }
 
+  restart(){
+    this.setState({names:   _.shuffle(names)})
+    this.setState({accepted: []})
+    this.setState({rejected: []});
+    this.setState({currentNameIndex: 0});
+    this.setState({gender: null});
+    localStorage.clear();
+    
+  }
+
+  selectGender(e){
+    this.setState({gender: "male"})    
+  }
+
   render() {
-    return (
-      <div className="App">
+    let display = null;
+    if (this.state.gender == null) {
+      display = <div className="section">
+        <h1>Vel kyn</h1>
+        <br />
+        <button className="button is-large" id="female" onClick={this.selectGender}><FaFemale></FaFemale> &nbsp;Genta</button>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <button className="button is-large" id="male" onClick={this.selectGender}><FaMale></FaMale> &nbsp;Drongur</button>
+      </div>;
+    } else {
+      display = <div>
+      <div className="navbar">
+        <div className="is-pulled-left" onClick={this.restart}><MdBack></MdBack> Byrja av nýggjum</div>
+      </div>
+      <div className="section">
         <ReactCSSTransitionReplace
           transitionName="fade-wait"
-          transitionEnterTimeout={600} 
+          transitionEnterTimeout={600}
           transitionLeaveTimeout={600}>
-          <h1 key={this.showID()}>{this.showName()}</h1>
+          <h1 className="title" key={this.showID()}>{this.showName()}</h1>
         </ReactCSSTransitionReplace>
 
         <ReactCSSTransitionReplace
           transitionName="fade-wait"
-          transitionEnterTimeout={600} 
+          transitionEnterTimeout={600}
           transitionLeaveTimeout={600}>
-          <p key={this.showID()}><small><i>{this.showDesc()}</i></small></p>
+          <h2 className="subtitlte" key={this.showID()}><small><i>{this.showDesc()}</i></small></h2>
         </ReactCSSTransitionReplace>
 
         <br />
         <p>
           <span key={this.progress()}>{this.progress()}</span>
-        
+
         </p>
         <br />
         <button className="button is-large is-danger" disabled={this.isFinished()} onClick={this.rejectName}>
-        <MdClear></MdClear>
+          <MdClear></MdClear>
         </button>
         &nbsp;
-        &nbsp;
-        &nbsp;
-        <button className="button is-large is-success" disabled={this.isFinished()} onClick={this.acceptName}>
-        <MdCheck></MdCheck>
+      &nbsp;
+      &nbsp;
+      <button className="button is-large is-success" disabled={this.isFinished()} onClick={this.acceptName}>
+          <MdCheck></MdCheck>
         </button>
         <br />
         <br />
         <ul>
 
-          <li><b>Vald nøvn:</b></li>
+          <li><b>Nøvn:</b></li>
           {this.noneSelectedYetMsg()}
           {this.state.accepted.map((data, i) => {
 
             return <CSSTransitionGroup
               transitionName="example"
               transitionEnterTimeout={1000}
-              transitionLeaveTimeout={900}><li key={this.state.names[data].id}>
-                {this.state.names[data].name}
+              transitionLeaveTimeout={900}><li key={data.id}>
+                {data.name}
               </li>
             </CSSTransitionGroup>
           })}
         </ul>
       </div>
+      </div>;
+    }
+
+    return (
+      <div className="App container">
+      {display}
+      </div> 
     );
   }
 }
