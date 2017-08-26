@@ -18,13 +18,13 @@ class App extends Component {
 
     // State
     this.state = {
-      names: _.shuffle(names),
-      originalNamesLength: names.length,
+      names: (typeof localStorage["gender"] != "undefined") ? _.shuffle(names[JSON.parse(localStorage.getItem('gender'))]) : [],
+      originalNamesLength: (typeof localStorage["gender"] != "undefined") ? names[JSON.parse(localStorage.getItem('gender'))].length : 0,
       accepted: (typeof localStorage["acceptedNames"] != "undefined") ? JSON.parse(localStorage.getItem('acceptedNames')) : [],
       rejected: (typeof localStorage["rejectedNames"] != "undefined") ? JSON.parse(localStorage.getItem('rejectedNames')) : [],
       currentNameIndex: 0,
-      gender: null
-    };
+      gender: (typeof localStorage["gender"] != "undefined") ? JSON.parse(localStorage.getItem('gender')) : null
+    }; 
 
     // Bindings
     this.rejectName = this.rejectName.bind(this);
@@ -39,7 +39,7 @@ class App extends Component {
     this.isAlreadyAccepted = this.isAlreadyAccepted.bind(this);
     this.restart = this.restart.bind(this);
     this.selectGender = this.selectGender.bind(this);
-
+    
     this.handleAllAcceptedNames();
     this.handleAllRejectedNames();
   }
@@ -145,7 +145,20 @@ class App extends Component {
   }
 
   selectGender(e){
-    this.setState({gender: "male"})    
+    let gender = e.target.id;
+    let namesList = names[gender];
+    this.setState({gender: gender});
+    this.setState({names: _.shuffle(namesList)});   
+    this.setState({originalNamesLength: namesList.length});   
+    localStorage.setItem('gender', JSON.stringify(gender));
+  }
+
+  fixSelectGender(){
+    if(this.state.gender){
+      let namesList = names[this.state.gender];
+      this.setState({names: _.shuffle(namesList)});   
+      this.setState({originalNamesLength: namesList.length});
+    }
   }
 
   render() {
@@ -163,7 +176,7 @@ class App extends Component {
     } else {
       display = <div>
       <div className="navbar">
-        <div className="is-pulled-left" onClick={this.restart}><MdBack></MdBack> Byrja av nýggjum</div>
+        <a className="is-pulled-left" onClick={this.restart}><MdBack></MdBack> Byrja av nýggjum</a>
       </div>
       <div className="section">
         <ReactCSSTransitionReplace
