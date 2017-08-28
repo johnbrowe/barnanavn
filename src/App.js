@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import names from './data/names.json';
 import _ from 'lodash';
@@ -178,54 +177,56 @@ class App extends Component {
       <div className="navbar">
         <a className="is-pulled-left" onClick={this.restart}><MdBack></MdBack> Byrja av nýggjum</a>
       </div>
-      <div className="section">
-        <ReactCSSTransitionReplace
-          transitionName="fade-wait"
-          transitionEnterTimeout={600}
-          transitionLeaveTimeout={600}>
-          <h1 className="title" key={this.showID()}>{this.showName()}</h1>
-        </ReactCSSTransitionReplace>
+      <section> 
+        <div className="section">
+          <ReactCSSTransitionReplace
+            transitionName="fade-wait"
+            transitionEnterTimeout={600}
+            transitionLeaveTimeout={600}>
+            <h1 className="title" key={this.showID()}>{this.showName()}</h1>
+          </ReactCSSTransitionReplace>
 
-        <ReactCSSTransitionReplace
-          transitionName="fade-wait"
-          transitionEnterTimeout={600}
-          transitionLeaveTimeout={600}>
-          <h2 className="subtitlte" key={this.showID()}><small><i>{this.showDesc()}</i></small></h2>
-        </ReactCSSTransitionReplace>
+          <ReactCSSTransitionReplace
+            transitionName="fade-wait"
+            transitionEnterTimeout={600}
+            transitionLeaveTimeout={600}>
+            <h2 className="subtitlte" key={this.showID()}><small><i>{this.showDesc()}</i></small></h2>
+          </ReactCSSTransitionReplace>
 
-        <br />
-        <p>
-          <span key={this.progress()}>{this.progress()}</span>
+          <br />
+          <p>
+            <span key={this.progress()}>{this.progress()}</span>
 
-        </p>
-        <br />
-        <button className="button is-large is-danger" disabled={this.isFinished()} onClick={this.rejectName}>
-          <MdClear></MdClear>
-        </button>
+          </p>
+          <br />
+          <button className="button is-large is-danger" disabled={this.isFinished()} onClick={this.rejectName}>
+            <MdClear></MdClear>
+          </button>
+          &nbsp;
         &nbsp;
-      &nbsp;
-      &nbsp;
-      <button className="button is-large is-success" disabled={this.isFinished()} onClick={this.acceptName}>
-          <MdCheck></MdCheck>
-        </button>
-        <br />
-        <br />
-        <ul>
+        &nbsp;
+        <button className="button is-large is-success" disabled={this.isFinished()} onClick={this.acceptName}>
+            <MdCheck></MdCheck>
+          </button>
+          <br />
+          <br />
+          <ul>
 
-          <li><b>Nøvn:</b></li>
-          {this.noneSelectedYetMsg()}
-          {this.state.accepted.map((data, i) => {
+            <li><b>Nøvn:</b></li>
+            {this.noneSelectedYetMsg()}
+            {this.state.accepted.map((data, i) => {
 
-            return <CSSTransitionGroup
-              transitionName="example"
-              transitionEnterTimeout={1000}
-              transitionLeaveTimeout={900}><li key={data.id}>
-                {data.name}
-              </li>
-            </CSSTransitionGroup>
-          })}
-        </ul>
-      </div>
+              return <CSSTransitionGroup
+                transitionName="example"
+                transitionEnterTimeout={1000}
+                transitionLeaveTimeout={900}><li key={data.id}>
+                  {data.name}
+                </li>
+              </CSSTransitionGroup>
+            })}
+          </ul>
+        </div>
+        </section>
       </div>;
     }
 
