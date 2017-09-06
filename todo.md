@@ -1,5 +1,4 @@
 # Todo list
-* [ ] Fix /myapp issue on build
 * [ ] Add test server
 * [ ] Update README.md
 * [ ] Move name list into different route
@@ -7,3 +6,4 @@
 * [ ] Delete name from name list
 * [ ] User should be able to regret reject and accept actions
 * [ ] Add info modal
+* [x] Fix /myapp issue on build

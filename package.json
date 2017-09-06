@@ -1,7 +1,7 @@
 {
-  "name": "barna",
+  "name": "Barnanavn",
   "version": "0.1.0",
-  "homepage" : "http://myname.github.io/myapp",
+  "homepage" : "https://barnanavn.surge.sh",
   "private": true,
   "dependencies": {
     "lodash": "^4.17.4",
