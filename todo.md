@@ -6,3 +6,4 @@
 * [ ] Animate name into name list tab
 * [ ] Delete name from name list
 * [ ] User should be able to regret reject and accept actions
+* [ ] Add info modal
