@@ -9,6 +9,7 @@ import MdClear from 'react-icons/lib/md/clear';
 import MdBack from 'react-icons/lib/md/keyboard-arrow-left';
 import FaFemale from 'react-icons/lib/fa/female';
 import FaMale from 'react-icons/lib/fa/male';
+import List from './components/List.js';
 
 class App extends Component {
 
@@ -33,7 +34,6 @@ class App extends Component {
     this.increment = this.increment.bind(this);
     this.progress = this.progress.bind(this);
     this.isFinished = this.isFinished.bind(this);
-    this.noneSelectedYetMsg = this.noneSelectedYetMsg.bind(this);
     this.handleAllAcceptedNames = this.handleAllAcceptedNames.bind(this);
     this.isAlreadyAccepted = this.isAlreadyAccepted.bind(this);
     this.restart = this.restart.bind(this);
@@ -125,14 +125,6 @@ class App extends Component {
     }
   }
 
-  noneSelectedYetMsg(){
-    if(this.state.accepted.length == 0){
-      return "Onki navn"    
-    } else {
-      return "";
-    }
-  }
-
   restart(){
     this.setState({names:   _.shuffle(names)})
     this.setState({accepted: []})
@@ -210,21 +202,7 @@ class App extends Component {
           </button>
           <br />
           <br />
-          <ul>
-
-            <li><b>Nøvn:</b></li>
-            {this.noneSelectedYetMsg()}
-            {this.state.accepted.map((data, i) => {
-
-              return <CSSTransitionGroup
-                transitionName="example"
-                transitionEnterTimeout={1000}
-                transitionLeaveTimeout={900}><li key={data.id}>
-                  {data.name}
-                </li>
-              </CSSTransitionGroup>
-            })}
-          </ul>
+          <List accepted={this.state.accepted}></List>
         </div>
         </section>
       </div>;
