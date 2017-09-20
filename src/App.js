@@ -24,7 +24,7 @@ class App extends Component {
       rejected: (typeof localStorage["rejectedNames"] != "undefined") ? JSON.parse(localStorage.getItem('rejectedNames')) : [],
       currentNameIndex: 0,
       gender: (typeof localStorage["gender"] != "undefined") ? JSON.parse(localStorage.getItem('gender')) : null
-    }; 
+    };
 
     // Bindings
     this.rejectName = this.rejectName.bind(this);
@@ -38,38 +38,38 @@ class App extends Component {
     this.isAlreadyAccepted = this.isAlreadyAccepted.bind(this);
     this.restart = this.restart.bind(this);
     this.selectGender = this.selectGender.bind(this);
-    
+
     this.handleAllAcceptedNames();
     this.handleAllRejectedNames();
   }
 
   handleAllAcceptedNames() {
-    if(this.state.accepted.length > 0){
+    if (this.state.accepted.length > 0) {
       this.state.names = this.state.names.filter((obj) => {
-        return this.isAlreadyAccepted(obj.id);        
-      });  
+        return this.isAlreadyAccepted(obj.id);
+      });
     }
   }
 
-  isAlreadyAccepted(id){
+  isAlreadyAccepted(id) {
     let result = this.state.accepted.some((obj) => {
-      return obj.id === id;  
+      return obj.id === id;
     });
 
     return !result;
   }
-  
+
   handleAllRejectedNames() {
-    if(this.state.rejected.length > 0){
+    if (this.state.rejected.length > 0) {
       this.state.names = this.state.names.filter((obj) => {
-        return this.isAlreadyRejected(obj.id);        
-      });  
+        return this.isAlreadyRejected(obj.id);
+      });
     }
   }
 
-  isAlreadyRejected(id){
+  isAlreadyRejected(id) {
     let result = this.state.rejected.some((obj) => {
-      return obj.id === id;  
+      return obj.id === id;
     });
 
     return !result;
@@ -96,7 +96,7 @@ class App extends Component {
   }
 
   progress() {
-    return ((this.state.accepted.length + this.state.rejected.length) + 1)  + "/" + (this.state.originalNamesLength + 1);
+    return ((this.state.accepted.length + this.state.rejected.length) + 1) + "/" + (this.state.originalNamesLength + 1);
   }
 
   isFinished() {
@@ -125,30 +125,30 @@ class App extends Component {
     }
   }
 
-  restart(){
-    this.setState({names:   _.shuffle(names)})
-    this.setState({accepted: []})
-    this.setState({rejected: []});
-    this.setState({currentNameIndex: 0});
-    this.setState({gender: null});
+  restart() {
+    this.setState({ names: _.shuffle(names) })
+    this.setState({ accepted: [] })
+    this.setState({ rejected: [] });
+    this.setState({ currentNameIndex: 0 });
+    this.setState({ gender: null });
     localStorage.clear();
-    
+
   }
 
-  selectGender(e){
+  selectGender(e) {
     let gender = e.target.id;
     let namesList = names[gender];
-    this.setState({gender: gender});
-    this.setState({names: _.shuffle(namesList)});   
-    this.setState({originalNamesLength: namesList.length});   
+    this.setState({ gender: gender });
+    this.setState({ names: _.shuffle(namesList) });
+    this.setState({ originalNamesLength: namesList.length });
     localStorage.setItem('gender', JSON.stringify(gender));
   }
 
-  fixSelectGender(){
-    if(this.state.gender){
+  fixSelectGender() {
+    if (this.state.gender) {
       let namesList = names[this.state.gender];
-      this.setState({names: _.shuffle(namesList)});   
-      this.setState({originalNamesLength: namesList.length});
+      this.setState({ names: _.shuffle(namesList) });
+      this.setState({ originalNamesLength: namesList.length });
     }
   }
 
@@ -166,52 +166,50 @@ class App extends Component {
       </div>;
     } else {
       display = <div>
-      <div className="navbar">
-        <a className="is-pulled-left" onClick={this.restart}><MdBack></MdBack> Byrja av nýggjum</a>
-      </div>
-      <section> 
-        <div className="section">
-          <ReactCSSTransitionReplace
-            transitionName="fade-wait"
-            transitionEnterTimeout={600}
-            transitionLeaveTimeout={600}>
-            <h1 className="title" key={this.showID()}>{this.showName()}</h1>
-          </ReactCSSTransitionReplace>
-
-          <ReactCSSTransitionReplace
-            transitionName="fade-wait"
-            transitionEnterTimeout={600}
-            transitionLeaveTimeout={600}>
-            <h2 className="subtitlte" key={this.showID()}><small><i>{this.showDesc()}</i></small></h2>
-          </ReactCSSTransitionReplace>
-
-          <br />
-          <p>
-            <span key={this.progress()}>{this.progress()}</span>
-
-          </p>
-          <br />
-          <button className="button is-large is-danger" disabled={this.isFinished()} onClick={this.rejectName}>
-            <MdClear></MdClear>
-          </button>
-          &nbsp;
-        &nbsp;
-        &nbsp;
-        <button className="button is-large is-success" disabled={this.isFinished()} onClick={this.acceptName}>
-            <MdCheck></MdCheck>
-          </button>
-          <br />
-          <br />
-          <List accepted={this.state.accepted}></List>
+        <div className="navbar">
+          <a className="is-pulled-left" onClick={this.restart}><MdBack></MdBack> Byrja av nýggjum</a>
         </div>
+        <section>
+          <div className="section">
+            <ReactCSSTransitionReplace
+              transitionName="fade-wait"
+              transitionEnterTimeout={600}
+              transitionLeaveTimeout={600}>
+              <h1 className="title" key={this.showID()}>{this.showName()}</h1>
+            </ReactCSSTransitionReplace>
+
+            <ReactCSSTransitionReplace
+              transitionName="fade-wait"
+              transitionEnterTimeout={600}
+              transitionLeaveTimeout={600}>
+              <h2 className="subtitlte" key={this.showID()}><small><i>{this.showDesc()}</i></small></h2>
+            </ReactCSSTransitionReplace>
+            <br />
+            
+            <p>
+              <span key={this.progress()}>{this.progress()}</span>
+            </p>
+            <br />
+            
+            <button className="button is-large is-danger" disabled={this.isFinished()} onClick={this.rejectName}>
+              <MdClear></MdClear>
+            </button>
+            &nbsp;&nbsp;&nbsp;
+            <button className="button is-large is-success" disabled={this.isFinished()} onClick={this.acceptName}>
+              <MdCheck></MdCheck>
+            </button>
+            <br />
+            <br />
+            <List accepted={this.state.accepted}></List>
+          </div>
         </section>
       </div>;
     }
 
     return (
       <div className="App container">
-      {display}
-      </div> 
+        {display}
+      </div>
     );
   }
 }
