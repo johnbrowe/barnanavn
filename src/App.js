@@ -9,6 +9,8 @@ import MdClear from 'react-icons/lib/md/clear';
 import MdBack from 'react-icons/lib/md/keyboard-arrow-left';
 import FaFemale from 'react-icons/lib/fa/female';
 import FaMale from 'react-icons/lib/fa/male';
+import Name from './components/Name.js';
+import Description from './components/Description.js';
 import List from './components/List.js';
 
 class App extends Component {
@@ -171,26 +173,16 @@ class App extends Component {
         </div>
         <section>
           <div className="section">
-            <ReactCSSTransitionReplace
-              transitionName="fade-wait"
-              transitionEnterTimeout={600}
-              transitionLeaveTimeout={600}>
-              <h1 className="title" key={this.showID()}>{this.showName()}</h1>
-            </ReactCSSTransitionReplace>
-
-            <ReactCSSTransitionReplace
-              transitionName="fade-wait"
-              transitionEnterTimeout={600}
-              transitionLeaveTimeout={600}>
-              <h2 className="subtitlte" key={this.showID()}><small><i>{this.showDesc()}</i></small></h2>
-            </ReactCSSTransitionReplace>
-            <br />
             
+            <Name id={this.showID()} name={this.showName()}></Name>
+            <Description id={this.showID()} desc={this.showDesc()}></Description>
+            <br />
+
             <p>
               <span key={this.progress()}>{this.progress()}</span>
             </p>
             <br />
-            
+
             <button className="button is-large is-danger" disabled={this.isFinished()} onClick={this.rejectName}>
               <MdClear></MdClear>
             </button>
