@@ -11,6 +11,7 @@ import FaFemale from 'react-icons/lib/fa/female';
 import FaMale from 'react-icons/lib/fa/male';
 import Name from './components/Name.js';
 import Description from './components/Description.js';
+import Progress from './components/Progress.js';
 import List from './components/List.js';
 
 class App extends Component {
@@ -177,10 +178,7 @@ class App extends Component {
             <Name id={this.showID()} name={this.showName()}></Name>
             <Description id={this.showID()} desc={this.showDesc()}></Description>
             <br />
-
-            <p>
-              <span key={this.progress()}>{this.progress()}</span>
-            </p>
+            <Progress progress={this.progress()}></Progress>
             <br />
 
             <button className="button is-large is-danger" disabled={this.isFinished()} onClick={this.rejectName}>
