@@ -7,9 +7,8 @@ import ReactCSSTransitionReplace from 'react-css-transition-replace';
 import MdCheck from 'react-icons/lib/md/check';
 import MdClear from 'react-icons/lib/md/clear';
 import MdBack from 'react-icons/lib/md/keyboard-arrow-left';
-import FaFemale from 'react-icons/lib/fa/female';
-import FaMale from 'react-icons/lib/fa/male';
 import Name from './components/Name.js';
+import SelectGender from './components/SelectGender.js';
 import Description from './components/Description.js';
 import Progress from './components/Progress.js';
 import List from './components/List.js';
@@ -158,15 +157,7 @@ class App extends Component {
   render() {
     let display = null;
     if (this.state.gender == null) {
-      display = <div className="section">
-        <h1>Vel kyn</h1>
-        <br />
-        <button className="button is-large" id="female" onClick={this.selectGender}><FaFemale></FaFemale> &nbsp;Genta</button>
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <button className="button is-large" id="male" onClick={this.selectGender}><FaMale></FaMale> &nbsp;Drongur</button>
-      </div>;
+      display = <SelectGender selectGender={this.selectGender}></SelectGender>
     } else {
       display = <div>
         <div className="navbar">
