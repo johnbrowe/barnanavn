@@ -26,8 +26,6 @@ class App extends Component {
     this.state = {
       names: (typeof localStorage["gender"] != "undefined") ? _.shuffle(names[JSON.parse(localStorage.getItem('gender'))]) : [],
       originalNamesLength: (typeof localStorage["gender"] != "undefined") ? names[JSON.parse(localStorage.getItem('gender'))].length : 0,
-      accepted: (typeof localStorage["acceptedNames"] != "undefined") ? JSON.parse(localStorage.getItem('acceptedNames')) : [],
-      rejected: (typeof localStorage["rejectedNames"] != "undefined") ? JSON.parse(localStorage.getItem('rejectedNames')) : [],
       currentNameIndex: 0,
       gender: (typeof localStorage["gender"] != "undefined") ? JSON.parse(localStorage.getItem('gender')) : null
     };
@@ -50,7 +48,7 @@ class App extends Component {
   }
 
   handleAllAcceptedNames() {
-    if (this.state.accepted.length > 0) {
+    if (this.props.names.accepted.length > 0) {
       this.state.names = this.state.names.filter((obj) => {
         return this.isAlreadyAccepted(obj.id);
       });
@@ -66,7 +64,7 @@ class App extends Component {
   }
 
   handleAllRejectedNames() {
-    if (this.state.rejected.length > 0) {
+    if (this.props.names.rejected.length > 0) {
       this.state.names = this.state.names.filter((obj) => {
         return this.isAlreadyRejected(obj.id);
       });
@@ -84,15 +82,12 @@ class App extends Component {
   rejectName() {
     store.dispatch(addRejectName(this.state.names[this.state.currentNameIndex]));
     //this.state.rejected.push(this.state.names[this.state.currentNameIndex]);
-    localStorage.setItem('rejectedNames', JSON.stringify(this.props.names.rejected));
     this.increment();
   }
 
   acceptName() {
-    console.log(this.state.names[this.state.currentNameIndex]);
     store.dispatch(addAcceptName(this.state.names[this.state.currentNameIndex]));
     //this.state.accepted.push(this.state.names[this.state.currentNameIndex]);
-    localStorage.setItem('acceptedNames', JSON.stringify(this.props.names.accepted));
     this.increment();
   }
 
@@ -105,7 +100,7 @@ class App extends Component {
   }
 
   progress() {
-    return ((this.state.accepted.length + this.state.rejected.length) + 1) + "/" + (this.state.originalNamesLength + 1);
+    return ((this.props.names.accepted.length + this.props.names.rejected.length) + 1) + "/" + (this.state.originalNamesLength + 1);
   }
 
   isFinished() {

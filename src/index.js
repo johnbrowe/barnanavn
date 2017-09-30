@@ -7,27 +7,23 @@ import registerServiceWorker from './registerServiceWorker';
 import store from './store.js';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { addToCart, updateCart, deleteFromCart } from './actions/cart-actions';
-/*
-console.log("initial state: ", store.getState());
 
-let unsubscribe = store.subscribe(() =>
-    console.log(store.getState())
-);
+// Set initial store state
+let localStorageState = {
+    accepted: (typeof localStorage["acceptedNames"] != "undefined") ? JSON.parse(localStorage.getItem('acceptedNames')) : [],
+    rejected: (typeof localStorage["rejectedNames"] != "undefined") ? JSON.parse(localStorage.getItem('rejectedNames')) : []
+}
 
-store.dispatch(addToCart('Coffee 500gm', 1, 250));
-store.dispatch(addToCart('Flour 1kg', 2, 110));
-store.dispatch(addToCart('Juice 2L', 1, 250));
 
-// Update Cart
-store.dispatch(updateCart('Flour 1kg', 5, 110));
+// Add all changes to localstorage
+store.subscribe(() => {
+    let state = store.getState();
+    localStorage.setItem('acceptedNames', JSON.stringify(state.names.accepted));
+    localStorage.setItem('rejectedNames', JSON.stringify(state.names.rejected));
+});
 
-// Delete from Cart
-store.dispatch(deleteFromCart('Coffee 500gm'));
-
-unsubscribe();
-*/
 window.react = React;
-window.store = store;   
+window.store = store;
 
 ReactDOM.render(
     <Provider store={store}>
