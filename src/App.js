@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
 import names from './data/names.json';
 import _ from 'lodash';
 import { CSSTransitionGroup } from 'react-transition-group'
@@ -12,6 +13,9 @@ import SelectGender from './components/SelectGender.js';
 import Description from './components/Description.js';
 import Progress from './components/Progress.js';
 import List from './components/List.js';
+import store from './store.js';
+import { addAcceptName, addRejectName } from './actions/name-actions';
+
 
 class App extends Component {
 
@@ -78,14 +82,17 @@ class App extends Component {
   }
 
   rejectName() {
-    this.state.rejected.push(this.state.names[this.state.currentNameIndex]);
-    localStorage.setItem('rejectedNames', JSON.stringify(this.state.rejected));
+    store.dispatch(addRejectName(this.state.names[this.state.currentNameIndex]));
+    //this.state.rejected.push(this.state.names[this.state.currentNameIndex]);
+    localStorage.setItem('rejectedNames', JSON.stringify(this.props.names.rejected));
     this.increment();
   }
 
   acceptName() {
-    this.state.accepted.push(this.state.names[this.state.currentNameIndex]);
-    localStorage.setItem('acceptedNames', JSON.stringify(this.state.accepted));
+    console.log(this.state.names[this.state.currentNameIndex]);
+    store.dispatch(addAcceptName(this.state.names[this.state.currentNameIndex]));
+    //this.state.accepted.push(this.state.names[this.state.currentNameIndex]);
+    localStorage.setItem('acceptedNames', JSON.stringify(this.props.names.accepted));
     this.increment();
   }
 
@@ -143,7 +150,7 @@ class App extends Component {
     this.setState({ gender: gender });
     this.setState({ names: _.shuffle(namesList) });
     this.setState({ originalNamesLength: namesList.length });
-    localStorage.setItem('gender', JSON.stringify(gender));
+    console.log(this.props.names); 
   }
 
   fixSelectGender() {
@@ -181,7 +188,7 @@ class App extends Component {
             </button>
             <br />
             <br />
-            <List accepted={this.state.accepted}></List>
+            <List></List>
           </div>
         </section>
       </div>;
@@ -195,4 +202,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = function(store) {
+  return {
+    names: store.names
+  };
+}
+
+export default connect(mapStateToProps)(App);
+
