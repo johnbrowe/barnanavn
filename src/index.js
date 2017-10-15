@@ -19,6 +19,7 @@ store.subscribe(() => {
     let state = store.getState();
     localStorage.setItem('acceptedNames', JSON.stringify(state.names.accepted));
     localStorage.setItem('rejectedNames', JSON.stringify(state.names.rejected));
+    localStorage.setItem('gender', JSON.stringify(state.gender.selected));
 });
 
 window.react = React;
