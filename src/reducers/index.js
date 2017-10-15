@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import nameReducer from './name-reducer';
+import genderReducer from './gender-reducer';
 
 const allReducers = {
-  names: nameReducer
+  names: nameReducer,
+  gender: genderReducer
 }
 
 const rootReducer = combineReducers(allReducers);
