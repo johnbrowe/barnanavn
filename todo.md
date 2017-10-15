@@ -1,5 +1,6 @@
 # Todo list
-* [ ] Add shuffle method
+* [x] Double check if isFinished() works 
+* [x] Add shuffle method
 * [ ] Add test server
 * [ ] Update README.md
 * [x] Add redux
