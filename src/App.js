@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import _ from 'lodash';
-import { CSSTransitionGroup } from 'react-transition-group'
-import ReactCSSTransitionReplace from 'react-css-transition-replace';
-import Name from './components/Name.js';
 import SelectGender from './components/SelectGender.js';
+import store from './store.js';
+import Restart from './components/Restart.js';
+import Name from './components/Name.js';
 import Description from './components/Description.js';
 import Progress from './components/Progress.js';
-import Restart from './components/Restart.js';
-import List from './components/List.js';
 import Buttons from './components/Buttons.js';
-import store from './store.js';
-import { selectGender } from './actions/gender-actions';
+import List from './components/List.js';
 
 
 class App extends Component {
@@ -59,7 +55,6 @@ class App extends Component {
 const mapStateToProps = function(store) {
  
   return {
-    names: store.names,
     gender: store.gender
   };
 }
