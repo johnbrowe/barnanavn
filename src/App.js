@@ -24,14 +24,8 @@ class App extends Component {
     // Bindings
     this.showName = this.showName.bind(this);
     this.showID = this.showID.bind(this);
-    this.progress = this.progress.bind(this);
     this.isFinished = this.isFinished.bind(this);
     this.restart = this.restart.bind(this);
-  }
-
-
-  progress() {
-    return ((this.props.names.accepted.length + this.props.names.rejected.length) + 1) + "/" + (this.props.names[this.props.gender.selected].length + 1);
   }
 
   isFinished() {
@@ -88,7 +82,7 @@ class App extends Component {
             <Name id={this.showID()} name={this.showName()}></Name>
             <Description id={this.showID()} desc={this.showDesc()}></Description>
             <br />
-            <Progress progress={this.progress()}></Progress>
+            <Progress></Progress>
             <br />
             <Buttons isFinished={this.isFinished()}
               name={this.props.names[this.props.gender.selected][this.props.names.index]}>
