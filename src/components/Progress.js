@@ -9,7 +9,7 @@ class Progress extends Component {
     }
 
     progress() {
-        return ((this.props.names.accepted.length + this.props.names.rejected.length) + 1) + "/" + (this.props.names[this.props.gender.selected].length + 1);
+        return ((this.props.names.accepted.length + this.props.names.rejected.length) + 1) + "/" + (this.props.names[this.props.gender.selected + 'Count']);
     }
 
     render() {

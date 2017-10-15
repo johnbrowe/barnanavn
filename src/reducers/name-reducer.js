@@ -4,7 +4,9 @@ import names from '../data/names.json';
 
 const initialState = {
     male: _.shuffle(names.male),
+    maleCount: names.male.length,
     female: _.shuffle(names.female),
+    femaleCount: names.female.length,
     accepted: (typeof localStorage["acceptedNames"] != "undefined") ? JSON.parse(localStorage.getItem('acceptedNames')) : [],
     rejected: (typeof localStorage["rejectedNames"] != "undefined") ? JSON.parse(localStorage.getItem('rejectedNames')) : [],
     index: 0
