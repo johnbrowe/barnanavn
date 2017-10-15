@@ -13,76 +13,34 @@ import List from './components/List.js';
 import Buttons from './components/Buttons.js';
 import store from './store.js';
 import { getNames, restart } from './actions/name-actions';
+import { selectGender } from './actions/gender-actions';
 
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-
-    // State
-    this.state = {
-      originalNamesLength: (typeof localStorage["gender"] != "undefined") ? this.props.names.names[JSON.parse(localStorage.getItem('gender'))].length : 0,
-      gender: (typeof localStorage["gender"] != "undefined") ? JSON.parse(localStorage.getItem('gender')) : null
-    };
-
+    
     // Bindings
     this.showName = this.showName.bind(this);
     this.showID = this.showID.bind(this);
     this.progress = this.progress.bind(this);
     this.isFinished = this.isFinished.bind(this);
-    this.handleAllAcceptedNames = this.handleAllAcceptedNames.bind(this);
-    this.isAlreadyAccepted = this.isAlreadyAccepted.bind(this);
     this.restart = this.restart.bind(this);
-    this.selectGender = this.selectGender.bind(this);
-
-    this.handleAllAcceptedNames();
-    this.handleAllRejectedNames();
   }
 
-  handleAllAcceptedNames() {
-    if (this.props.names.accepted.length > 0) {
-      this.props.names = this.props.names.filter((obj) => {
-        return this.isAlreadyAccepted(obj.id);
-      });
-    }
-  }
-
-  isAlreadyAccepted(id) {
-    let result = this.state.accepted.some((obj) => {
-      return obj.id === id;
-    });
-
-    return !result;
-  }
-
-  handleAllRejectedNames() {
-    if (this.props.names.rejected.length > 0) {
-      this.state.names = this.state.names.filter((obj) => {
-        return this.isAlreadyRejected(obj.id);
-      });
-    }
-  }
-
-  isAlreadyRejected(id) {
-    let result = this.state.rejected.some((obj) => {
-      return obj.id === id;
-    });
-
-    return !result;
-  }
 
   progress() {
-    return ((this.props.names.accepted.length + this.props.names.rejected.length) + 1) + "/" + (this.state.originalNamesLength + 1);
+    return ((this.props.names.accepted.length + this.props.names.rejected.length) + 1) + "/" + (this.props.names[this.props.gender.selected].length + 1);
   }
 
   isFinished() {
-    return (this.props.names.index + 1) > this.props.names.length
+    return (this.props.names[this.props.gender.selected].index + 1) > this.props.names.length
   }
 
   showID() {
     if (!this.isFinished()) {
-      return this.props.names.names[this.state.gender][this.props.names.index].id
+      return this.props.names[this.props.gender.selected][this.props.names.index].id
     } else {
       return "Onki navn eftir"
     }
@@ -90,7 +48,7 @@ class App extends Component {
 
   showName() {
     if (!this.isFinished()) {
-      return this.props.names.names[this.state.gender][this.props.names.index].name
+      return this.props.names[this.props.gender.selected][this.props.names.index].name
     } else {
       return "Onki navn eftir"
     }
@@ -98,40 +56,27 @@ class App extends Component {
 
   showDesc() {
     if (!this.isFinished()) {
-      return this.props.names.names[this.state.gender][this.props.names.index].desc
+      return this.props.names[this.props.gender.selected][this.props.names.index].desc
     }
   }
 
   restart() {
-    //this.setState({ names: _.shuffle(names) })
-    this.setState({ accepted: [] })
-    this.setState({ rejected: [] });
-    restart();
-    this.setState({ gender: null });
+    store.dispatch(restart());
+    store.dispatch(selectGender(null));
     localStorage.clear();
-
-  }
-
-  selectGender(e) {
-    let gender = e.target.id;
-    let namesList = this.props.names.names[gender];
-    this.setState({ gender: gender });
-    this.setState({ names: _.shuffle(namesList) });
-    this.setState({ originalNamesLength: namesList.length });
-    console.log(this.props.names); 
   }
 
   fixSelectGender() {
-    if (this.state.gender) {
-      let namesList = this.props.names.names[this.props.gender];
+    if (this.props.gender.selected) {
+      let namesList = this.props.names[this.props.gender];
       this.setState({ originalNamesLength: namesList.length });
     }
   }
 
   render() {
     let display = null;
-    if (this.state.gender == null) {
-      display = <SelectGender selectGender={this.selectGender}></SelectGender>
+    if (this.props.gender.selected == null) {
+      display = <SelectGender></SelectGender>
     } else {
       display = <div>
         <div className="navbar">
@@ -146,7 +91,7 @@ class App extends Component {
             <Progress progress={this.progress()}></Progress>
             <br />
             <Buttons isFinished={this.isFinished()}
-              name={this.props.names.names[this.state.gender][this.props.names.index]}>
+              name={this.props.names[this.props.gender.selected][this.props.names.index]}>
             </Buttons>
 
             <br />
@@ -168,7 +113,8 @@ class App extends Component {
 const mapStateToProps = function(store) {
  
   return {
-    names: store.names
+    names: store.names,
+    gender: store.gender
   };
 }
 
