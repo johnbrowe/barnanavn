@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import names from './data/names.json';
 import _ from 'lodash';
 import { CSSTransitionGroup } from 'react-transition-group'
 import ReactCSSTransitionReplace from 'react-css-transition-replace';
-import MdCheck from 'react-icons/lib/md/check';
-import MdClear from 'react-icons/lib/md/clear';
 import MdBack from 'react-icons/lib/md/keyboard-arrow-left';
 import Name from './components/Name.js';
 import SelectGender from './components/SelectGender.js';
 import Description from './components/Description.js';
 import Progress from './components/Progress.js';
 import List from './components/List.js';
+import Buttons from './components/Buttons.js';
 import store from './store.js';
-import { addAcceptName, addRejectName } from './actions/name-actions';
+import { getNames, restart } from './actions/name-actions';
 
 
 class App extends Component {
@@ -24,18 +22,13 @@ class App extends Component {
 
     // State
     this.state = {
-      names: (typeof localStorage["gender"] != "undefined") ? _.shuffle(names[JSON.parse(localStorage.getItem('gender'))]) : [],
-      originalNamesLength: (typeof localStorage["gender"] != "undefined") ? names[JSON.parse(localStorage.getItem('gender'))].length : 0,
-      currentNameIndex: 0,
+      originalNamesLength: (typeof localStorage["gender"] != "undefined") ? this.props.names.names[JSON.parse(localStorage.getItem('gender'))].length : 0,
       gender: (typeof localStorage["gender"] != "undefined") ? JSON.parse(localStorage.getItem('gender')) : null
     };
 
     // Bindings
-    this.rejectName = this.rejectName.bind(this);
-    this.acceptName = this.acceptName.bind(this);
     this.showName = this.showName.bind(this);
     this.showID = this.showID.bind(this);
-    this.increment = this.increment.bind(this);
     this.progress = this.progress.bind(this);
     this.isFinished = this.isFinished.bind(this);
     this.handleAllAcceptedNames = this.handleAllAcceptedNames.bind(this);
@@ -49,7 +42,7 @@ class App extends Component {
 
   handleAllAcceptedNames() {
     if (this.props.names.accepted.length > 0) {
-      this.state.names = this.state.names.filter((obj) => {
+      this.props.names = this.props.names.filter((obj) => {
         return this.isAlreadyAccepted(obj.id);
       });
     }
@@ -79,37 +72,17 @@ class App extends Component {
     return !result;
   }
 
-  rejectName() {
-    store.dispatch(addRejectName(this.state.names[this.state.currentNameIndex]));
-    //this.state.rejected.push(this.state.names[this.state.currentNameIndex]);
-    this.increment();
-  }
-
-  acceptName() {
-    store.dispatch(addAcceptName(this.state.names[this.state.currentNameIndex]));
-    //this.state.accepted.push(this.state.names[this.state.currentNameIndex]);
-    this.increment();
-  }
-
-  increment() {
-    this.setState(function (prevState, props) {
-      return {
-        currentNameIndex: prevState.currentNameIndex + 1
-      };
-    });
-  }
-
   progress() {
     return ((this.props.names.accepted.length + this.props.names.rejected.length) + 1) + "/" + (this.state.originalNamesLength + 1);
   }
 
   isFinished() {
-    return (this.state.currentNameIndex + 1) > this.state.names.length
+    return (this.props.names.index + 1) > this.props.names.length
   }
 
   showID() {
     if (!this.isFinished()) {
-      return this.state.names[this.state.currentNameIndex].id
+      return this.props.names.names[this.state.gender][this.props.names.index].id
     } else {
       return "Onki navn eftir"
     }
@@ -117,7 +90,7 @@ class App extends Component {
 
   showName() {
     if (!this.isFinished()) {
-      return this.state.names[this.state.currentNameIndex].name
+      return this.props.names.names[this.state.gender][this.props.names.index].name
     } else {
       return "Onki navn eftir"
     }
@@ -125,15 +98,15 @@ class App extends Component {
 
   showDesc() {
     if (!this.isFinished()) {
-      return this.state.names[this.state.currentNameIndex].desc
+      return this.props.names.names[this.state.gender][this.props.names.index].desc
     }
   }
 
   restart() {
-    this.setState({ names: _.shuffle(names) })
+    //this.setState({ names: _.shuffle(names) })
     this.setState({ accepted: [] })
     this.setState({ rejected: [] });
-    this.setState({ currentNameIndex: 0 });
+    restart();
     this.setState({ gender: null });
     localStorage.clear();
 
@@ -141,7 +114,7 @@ class App extends Component {
 
   selectGender(e) {
     let gender = e.target.id;
-    let namesList = names[gender];
+    let namesList = this.props.names.names[gender];
     this.setState({ gender: gender });
     this.setState({ names: _.shuffle(namesList) });
     this.setState({ originalNamesLength: namesList.length });
@@ -150,8 +123,7 @@ class App extends Component {
 
   fixSelectGender() {
     if (this.state.gender) {
-      let namesList = names[this.state.gender];
-      this.setState({ names: _.shuffle(namesList) });
+      let namesList = this.props.names.names[this.props.gender];
       this.setState({ originalNamesLength: namesList.length });
     }
   }
@@ -173,14 +145,10 @@ class App extends Component {
             <br />
             <Progress progress={this.progress()}></Progress>
             <br />
+            <Buttons isFinished={this.isFinished()}
+              name={this.props.names.names[this.state.gender][this.props.names.index]}>
+            </Buttons>
 
-            <button className="button is-large is-danger" disabled={this.isFinished()} onClick={this.rejectName}>
-              <MdClear></MdClear>
-            </button>
-            &nbsp;&nbsp;&nbsp;
-            <button className="button is-large is-success" disabled={this.isFinished()} onClick={this.acceptName}>
-              <MdCheck></MdCheck>
-            </button>
             <br />
             <br />
             <List></List>
@@ -198,6 +166,7 @@ class App extends Component {
 }
 
 const mapStateToProps = function(store) {
+ 
   return {
     names: store.names
   };
