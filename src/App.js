@@ -24,10 +24,8 @@ class App extends Component {
     } else {
       display = <div>
         <Restart></Restart>
-            
         <section>
           <div className="section">
-            
             <Name></Name>
             <Description></Description>
             <br />
@@ -35,7 +33,6 @@ class App extends Component {
             <br />
             <Buttons>
             </Buttons>
-
             <br />
             <br />
             <List></List>
@@ -53,7 +50,6 @@ class App extends Component {
 }
 
 const mapStateToProps = function(store) {
- 
   return {
     gender: store.gender
   };
