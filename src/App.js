@@ -28,17 +28,18 @@ class App extends Component {
           <li><a href="./navn">Navn</a></li>
           <li><a href="./ja">Ja</a></li>
         </ul>
-        <Switch>
-          <Route exact path='/navn' component={Action}/>
-          <Route path='/nei' component={RejectedList}/>
-          <Route path='/ja' component={AcceptedList}/>
-        </Switch>
-        
+        <div className="action-container">
+          <Switch>
+            <Route exact path='/navn' component={Action}/>
+            <Route path='/nei' component={RejectedList}/>
+            <Route path='/ja' component={AcceptedList}/>
+          </Switch>
+        </div>
       </div>;
     }
 
     return (
-      <div className="App container">
+      <div className="App">
         {display}
       </div>
     );
