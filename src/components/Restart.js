@@ -20,7 +20,7 @@ class Restart extends Component {
     render() {
         return (
             <div className="navbar">
-                <a className="is-pulled-left" onClick={this.restart}><MdBack></MdBack> Byrja av nýggjum</a>
+                <a className="restart" onClick={this.restart}><MdBack></MdBack> Byrja av nýggjum</a>
             </div>
         );
     }
