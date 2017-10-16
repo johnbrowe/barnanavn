@@ -35,7 +35,7 @@ class Description extends Component {
                     transitionName="fade-wait"
                     transitionEnterTimeout={600}
                     transitionLeaveTimeout={600}>
-                    <h2 className="subtitlte" key={this.showID()}><small><i>{this.showDesc()}</i></small></h2>
+                    <h2 className="name-description" key={this.showID()}><small><i>{this.showDesc()}</i></small></h2>
                 </ReactCSSTransitionReplace>
             </div>
         );
