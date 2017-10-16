@@ -5,7 +5,24 @@
 h1 {
   font-size: 3rem;
 }
+/* Menu's */
+.tab-menu {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid green; 
+}
 
+.tab-menu li {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.tab-menu li:nth-of-type(2) {
+  border-left: 1px solid green;
+  border-right: 1px solid green;
+}
+
+/* Animations */
 .example-enter {
   opacity: 0.01;
 }
