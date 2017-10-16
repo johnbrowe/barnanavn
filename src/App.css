@@ -1,11 +1,97 @@
-.App {
-  text-align: center;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* RESET END */
+
+:root {
+  --first-color: #C88E2D;
+  --second-color: #5187B5;
+  --third-color: #819B42;
+  --fourth-color: #D13945;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;  
+  background-color: white;
+  background: url("/svgs/background.svg") bottom center no-repeat;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: left top;
 }
 
 h1 {
+  font-family: 'Merriweather', serif;
+  color: var(--first-color);
   font-size: 3rem;
 }
+
+.action-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.name-description {
+  font-family: 'Merriweather', serif;
+  color: #D4C4A4;
+  font-size: 1rem;
+}
+
 /* Menu's */
+.restart {
+}
+
 .tab-menu {
   display: flex;
   justify-content: center;
