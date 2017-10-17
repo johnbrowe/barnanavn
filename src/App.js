@@ -17,30 +17,24 @@ class App extends Component {
   }
 
   render() {
-    let display = null;
-    if (this.props.gender.selected == null) {
-      display = <SelectGender></SelectGender>
-    } else {
-      display = <div>
+    return (
+      <div className="App">
+        <div>
         <Restart></Restart> 
         <ul className="tab-menu">
           <li><a href="./nei">Nei</a></li>
-          <li><a href="./navn">Navn</a></li>
+          <li><a href="/">Navn</a></li>
           <li><a href="./ja">Ja</a></li>
         </ul>
         <div className="action-container">
           <Switch>
+            <Route exact path='/' component={SelectGender}/>
             <Route exact path='/navn' component={Action}/>
-            <Route path='/nei' component={RejectedList}/>
-            <Route path='/ja' component={AcceptedList}/>
+            <Route exact path='/nei' component={RejectedList}/>
+            <Route exact path='/ja' component={AcceptedList}/>
           </Switch>
         </div>
-      </div>;
-    }
-
-    return (
-      <div className="App">
-        {display}
+      </div>
       </div>
     );
   }

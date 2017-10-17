@@ -3,24 +3,32 @@ import FaFemale from 'react-icons/lib/fa/female';
 import FaMale from 'react-icons/lib/fa/male';
 import { selectGender } from '../actions/gender-actions';
 import store from '../store.js';
+import { withRouter } from 'react-router';
 
-const SelectGender = () => {
-    const selectFemale = () => {
+
+class SelectGender extends Component {
+
+    selectFemale = () => {
         store.dispatch(selectGender('female'));
+        this.props.history.push('/navn');
     }
 
-    const selectMale = () => {
+    selectMale = () => {
         store.dispatch(selectGender('male'));
+        this.props.history.push('/navn');
     }
 
-    return (
-        <div className="section">
-            <h1>Vel kyn</h1>
-            <br />
-            <button className="button is-large" onClick={selectFemale}><FaFemale></FaFemale> &nbsp;Genta</button>
-            <button className="button is-large" onClick={selectMale}><FaMale></FaMale> &nbsp;Drongur</button>
-        </div>
-    );
+    render() {
+        return (
+            <div className="section">
+                <h1>Vel kyn</h1>
+                <br />
+                <button className="button is-large" onClick={this.selectFemale}><FaFemale></FaFemale> &nbsp;Genta</button>
+                <button className="button is-large" onClick={this.selectMale}><FaMale></FaMale> &nbsp;Drongur</button>
+            </div>
+        );
+    }
 }
 
-export default SelectGender;
+const SelectGenderWithRouter = withRouter(SelectGender);
+export default SelectGenderWithRouter;
