@@ -51,8 +51,20 @@ table {
 :root {
   --first-color: #C88E2D;
   --second-color: #5187B5;
+  --second-color-ligther: #A8C3DA;
   --third-color: #819B42;
   --fourth-color: #D13945;
+  --xl-size: 57.665rem;
+  --l-size: 25.629rem;
+  --lm-size: 11.391rem;
+  --m-size: 5.063rem;
+  --s-size: 3.375rem;
+  --xs-size: 1.5rem;
+  --default-size: 1rem;
+}
+
+html {
+  font-size: var(--default-size);
 }
 
 html, body {
@@ -66,46 +78,105 @@ body {
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: left top;
+  height: 100vh; 
 }
+
 
 h1 {
   font-family: 'Merriweather', serif;
   color: var(--first-color);
-  font-size: 3rem;
+  font-size: var(--lm-size);
+  margin-bottom: var(--s-size);
 }
 
-.action-container {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.name-box {
+  height: 20rem;
+  margin-bottom: var(--s-size);
 }
 
 .name-description {
   font-family: 'Merriweather', serif;
   color: #D4C4A4;
-  font-size: 1rem;
+  font-size: var(--s-size);
+  margin-bottom: var(--s-size);
+}
+
+.App {
+  display: flex;
+  flex-flow: column;
+}
+
+.action-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+}
+
+.action-box {
+  width: var(--xl-size);
+}
+
+.progress-box {
+  margin-bottom: auto;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--s-size);
+}
+
+.button {
+  font-family: inherit;
+  font-size: var(--xs-size);
+  padding: 1rem var(--lm-size);
+  color: #fff;
+  border: 1px solid #999;
+  border: transparent;
+  background-color: #E6E6E6;
+  text-decoration: none;
+  border-radius: 0;
+}
+
+.button-yes {
+  background-color: var(--third-color);
+}
+
+.button-no {
+  background-color: var(--fourth-color);
 }
 
 /* Menu's */
 .restart {
+  float: left;
 }
 
 .tab-menu {
   display: flex;
-  justify-content: center;
-  border-bottom: 1px solid green; 
+  justify-content: space-evenly;
+  border-bottom: 3px solid var(--second-color-ligther);
+  margin-bottom: var(--m-size);  
 }
 
 .tab-menu li {
   padding-left: 20px;
   padding-right: 20px;
+  width: 33%;
+  padding: var(--default-size);
+}
+
+.tab-menu a {
+  color: var(--second-color);
+  font-size: var(--s-size);
+  text-decoration: none;
 }
 
 .tab-menu li:nth-of-type(2) {
-  border-left: 1px solid green;
-  border-right: 1px solid green;
+  border-left: 3px solid var(--second-color-ligther);
+  border-right: 3px solid var(--second-color-ligther);
 }
 
 /* Animations */
