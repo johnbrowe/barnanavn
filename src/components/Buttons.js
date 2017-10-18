@@ -34,12 +34,12 @@ class Buttons extends Component {
 
     render() {
         return (
-            <div>
-                <button className="button is-large is-danger" disabled={this.isFinished()} onClick={this.rejectName}>
+            <div className="buttons">
+                <button className="button button-no" disabled={this.isFinished()} onClick={this.rejectName}>
                     <MdClear></MdClear>
                 </button>
                 &nbsp;&nbsp;&nbsp;
-                <button className="button is-large is-success" disabled={this.isFinished()} onClick={this.acceptName}>
+                <button className="button button-yes" disabled={this.isFinished()} onClick={this.acceptName}>
                     <MdCheck></MdCheck>
                 </button>
             </div>
