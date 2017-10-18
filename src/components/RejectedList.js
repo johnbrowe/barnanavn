@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Menu from './Menu.js';
 import './../App.css';
 import { CSSTransitionGroup } from 'react-transition-group'
 import { connect } from 'react-redux';
@@ -25,7 +26,8 @@ class RejectedList extends Component {
 
   render() {
     return (
-      <div>
+      <section>
+        <Menu></Menu>
         <ul>
           <li><b>Nøvn:</b></li>
           {this.noneSelectedYetMsg()}
@@ -36,7 +38,7 @@ class RejectedList extends Component {
             </li>
           })}
         </ul>
-      </div>
+      </section>
     );
   }
 }
