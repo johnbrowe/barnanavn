@@ -81,6 +81,9 @@ body {
   height: 100vh; 
 }
 
+a {
+  cursor: pointer;
+}
 
 h1 {
   font-family: 'Merriweather', serif;
@@ -111,7 +114,7 @@ h1 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 100vh;
+  height: 90vh;
 }
 
 .action-box {
@@ -151,7 +154,11 @@ h1 {
 
 /* Menu's */
 .restart {
+  margin-top: var(--xs-size);
+  margin-left: var(--xs-size);
   float: left;
+  color: var(--second-color);
+  font-size: var(--xs-size);
 }
 
 .tab-menu {
