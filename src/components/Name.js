@@ -23,14 +23,22 @@ class Name extends Component {
         }
     }
 
+    showID() {
+        if (!this.isFinished()) {
+            return this.props.names[this.props.gender.selected][this.props.names.index].id
+        } else {
+            return "Onki navn eftir"
+        }
+    }
+
     render() {
         return (
             <div>
                 <ReactCSSTransitionReplace
                     transitionName="fade-wait"
-                    transitionEnterTimeout={600}
-                    transitionLeaveTimeout={600}>
-                    <h1 className="display-name" key={this.props.id}>{this.showName()}</h1>
+                    transitionEnterTimeout={1000}
+                    transitionLeaveTimeout={1000}>
+                    <h1 className="display-name" key={this.showID()}>{this.showName()}</h1>
                 </ReactCSSTransitionReplace>
             </div>
         );
