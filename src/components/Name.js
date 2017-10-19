@@ -30,7 +30,7 @@ class Name extends Component {
                     transitionName="fade-wait"
                     transitionEnterTimeout={600}
                     transitionLeaveTimeout={600}>
-                    <h1 className="title" key={this.props.id}>{this.showName()}</h1>
+                    <h1 className="display-name" key={this.props.id}>{this.showName()}</h1>
                 </ReactCSSTransitionReplace>
             </div>
         );
