@@ -1,10 +1,14 @@
 import React from 'react';
+import { withRouter } from 'react-router';
+import { NavLink } from 'react-router-dom'
+
 
 const Menu = () => (
     <ul className="tab-menu">
-        <li><a href="./nei">Nei</a></li>
-        <li><a href="/navn">Navn</a></li>
-        <li><a href="./ja">Ja</a></li>
+        
+        <li><NavLink to="/nei">Nei</NavLink></li>
+        <li><NavLink to="/navn">Navn</NavLink></li>
+        <li><NavLink to="/ja">Ja</NavLink></li>
     </ul>
 );
 

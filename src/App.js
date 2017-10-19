@@ -9,6 +9,7 @@ import Action from './components/Action.js';
 import AcceptedList from './components/AcceptedList.js';
 import RejectedList from './components/RejectedList.js';
 import { Switch, Route } from 'react-router-dom'
+import { withRouter } from 'react-router';
 
 
 class App extends Component {
@@ -42,5 +43,6 @@ const mapStateToProps = function (store) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+
+export default withRouter(connect(mapStateToProps)(App));
 
