@@ -26,7 +26,7 @@ class Restart extends Component {
     render() {
         return (
             <div className={this.shouldDisplayRestart() + " navbar"}>
-                <a className="restart" onClick={this.restart.bind(this)}><span className="back-icon"><MdBack></MdBack></span> Byrja av nýggjum</a>
+                <a className="restart" onClick={this.restart.bind(this)}><span className="back-icon"><MdBack></MdBack></span> Alt umaftur</a>
             </div>
         );
     }
