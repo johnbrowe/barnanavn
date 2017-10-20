@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import store from '../store.js';
-import { Line, Circle } from 'rc-progress';
+import { Line } from 'rc-progress';
 
 
 class Progress extends Component {
