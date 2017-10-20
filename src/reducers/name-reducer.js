@@ -1,4 +1,4 @@
-import  { ADD_ACCEPT_NAME, ADD_REJECT_NAME, GET_NAMES, INCREMENT, RESTART }  from '../actions/name-actions';
+import  { ADD_ACCEPT_NAME, ADD_REJECT_NAME, MOVE_TO_REJECTED, MOVE_TO_ACCEPTED, GET_NAMES, INCREMENT, RESTART }  from '../actions/name-actions';
 import _ from 'lodash';
 import names from '../data/names.json';
 
@@ -26,10 +26,34 @@ export default function (state = initialState, action) {
         }
 
         case ADD_REJECT_NAME: {
-                return {
+            return {
                 ...state,
                 rejected: [...state.rejected, action.payload]
             }
+        }
+
+        case MOVE_TO_ACCEPTED: {
+            // TODO: Make this more perfomant
+            let rejected = state.rejected.filter(name => name.id != action.payload);
+            let name = state.rejected.filter(name => name.id == action.payload);
+
+            return {
+                ...state,
+                rejected: rejected,
+                accepted: [...state.accepted, name[0]], 
+            } 
+        }
+        
+        case MOVE_TO_REJECTED: {
+            // TODO: Make this more perfomant
+            let accepted = state.accepted.filter(name => name.id != action.payload);
+            let name = state.accepted.filter(name => name.id == action.payload);
+
+            return {
+                ...state,
+                accepted: accepted,
+                rejected: [...state.rejected, name[0]], 
+            } 
         }
 
         case GET_NAMES: {
