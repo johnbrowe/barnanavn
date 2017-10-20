@@ -28,8 +28,8 @@ class List extends Component {
     return (
       <section>
         <Menu></Menu>
-        <ul>
-          <li><b>Nøvn:</b></li>
+        <p>Nøvn:</p>
+        <ul className="name-list">
           {this.noneSelectedYetMsg()}
 
           {this.props.accepted.map((data, i) => {

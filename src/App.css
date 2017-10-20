@@ -108,7 +108,7 @@ ul.list {
   justify-content: space-around;  
 }
 
-li {
+p, li {
   font-size: var(--m-size);
 }
 
@@ -122,7 +122,6 @@ li {
   display: inline-block;
   margin:var(--s-size) 0 0 0;
   flex-grow: 1;
-  width: 100%;
 }
 
 li .active {
@@ -169,6 +168,21 @@ li .active {
 
 .action-box {
   width: 90%;
+}
+
+.name-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.action-box p {
+  font-weight: 600;
+}
+
+.action-box li {
+  padding: 1rem 0;
+  width: 100%;
+  flex-grow: 1;
 }
 
 .progress-box {
@@ -343,15 +357,16 @@ li .active {
     font-size: 10px;
   }
 
-  li {
+  p, li {
     font-size: var(--s-size);
-  }  
-
-  .list li {
-    margin:var(--xs-size) 0 0 0;
-    width: 50%;
   }
-
+  
+  .action-box li {
+    padding: 1rem 0;
+    width: 50%;
+    flex-grow: 1;
+  }
+  
   .buttons {
     margin-bottom: var(--m-size);
     justify-content: center;
