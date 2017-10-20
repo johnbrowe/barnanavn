@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import store from './../store.js';
 
 
-class List extends Component {
+class RejectedList extends Component {
 
   constructor(props) {
     super(props);
@@ -16,7 +16,7 @@ class List extends Component {
   }
 
   noneSelectedYetMsg() {
-    if (this.props.accepted.length == 0) {
+    if (this.props.rejected.length == 0) {
       return "Onki navn"
     } else {
       return "";
@@ -30,7 +30,7 @@ class List extends Component {
           <li><b>Nøvn:</b></li>
           {this.noneSelectedYetMsg()}
 
-          {this.props.accepted.map((data, i) => {
+          {this.props.rejected.map((data, i) => {
             return <li key={i}>
               {data.name}
             </li>
@@ -43,8 +43,8 @@ class List extends Component {
 
 const mapStateToProps = function (store) {
   return {
-    accepted: store.names.accepted
+    rejected: store.names.rejected
   };
 }
 
-export default connect(mapStateToProps)(List);
+export default connect(mapStateToProps)(RejectedList);
