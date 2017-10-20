@@ -33,26 +33,24 @@ export default function (state = initialState, action) {
         }
 
         case MOVE_TO_ACCEPTED: {
-            // TODO: Make this more perfomant
             let rejected = state.rejected.filter(name => name.id != action.payload);
-            let name = state.rejected.filter(name => name.id == action.payload);
+            let name = _.find(state.rejected, (name) => name.id == action.payload);
 
             return {
                 ...state,
                 rejected: rejected,
-                accepted: [...state.accepted, name[0]], 
+                accepted: [...state.accepted, name]
             } 
         }
         
         case MOVE_TO_REJECTED: {
-            // TODO: Make this more perfomant
             let accepted = state.accepted.filter(name => name.id != action.payload);
-            let name = state.accepted.filter(name => name.id == action.payload);
+            let name = _.find(state.accepted, name => name.id == action.payload);
 
             return {
                 ...state,
                 accepted: accepted,
-                rejected: [...state.rejected, name[0]], 
+                rejected: [...state.rejected, name] 
             } 
         }
 
