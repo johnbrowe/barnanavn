@@ -4,7 +4,7 @@ import './../App.css';
 import { CSSTransitionGroup } from 'react-transition-group'
 import { connect } from 'react-redux';
 import store from './../store.js';
-
+import { moveToAccepted } from '../actions/name-actions';
 
 class RejectedList extends Component {
 
@@ -24,6 +24,10 @@ class RejectedList extends Component {
     }
   }
 
+  moveToAccepted(e) {
+    store.dispatch(moveToAccepted(e.target.id));
+  }
+
   render() {
     return (
       <section>
@@ -34,7 +38,7 @@ class RejectedList extends Component {
 
           {this.props.rejected.map((data, i) => {
             return <li key={i}>
-              {data.name}
+              {data.name} <span id={data.id} onClick={this.moveToAccepted}>x</span>
             </li>
           })}
         </ul>
