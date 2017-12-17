@@ -1,7 +1,7 @@
 {
-  "name": "Barnanavn",
-  "version": "0.1.0",
-  "homepage": "https://barnanavn.surge.sh",
+  "name": "Navnabretti",
+  "version": "0.5.0",
+  "homepage": "https://navn.surge.sh",
   "private": true,
   "dependencies": {
     "lodash": "^4.17.4",
