@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './../App.css';
+import Menu from './Menu.js';
 import { CSSTransitionGroup } from 'react-transition-group'
 import { connect } from 'react-redux';
 import store from './../store.js';
@@ -25,7 +26,8 @@ class List extends Component {
 
   render() {
     return (
-      <div>
+      <section>
+        <Menu></Menu>
         <ul>
           <li><b>Nøvn:</b></li>
           {this.noneSelectedYetMsg()}
@@ -36,7 +38,7 @@ class List extends Component {
             </li>
           })}
         </ul>
-      </div>
+      </section>
     );
   }
 }

@@ -6,6 +6,7 @@ import Name from './Name.js';
 import Description from './Description.js';
 import Progress from './Progress.js';
 import Buttons from './Buttons.js';
+import Menu from './Menu.js';
 
 
 class Action extends Component {
@@ -16,20 +17,15 @@ class Action extends Component {
 
     render() {
         return (
-            <div>
-                <section>
-                    <div className="section">
-                        <Name></Name>
-                        <Description></Description>
-                        <br />
-                        <Progress></Progress>
-                        <br />
-                        <Buttons>
-                        </Buttons>
-                    </div>
-                </section>
-            </div>
-
+            <section>
+                <Menu></Menu>
+                <div className="name-box">
+                    <Name></Name>
+                    <Description></Description>
+                </div>
+                <Buttons></Buttons>
+                <Progress></Progress>
+            </section>                          
         );
     }
 }

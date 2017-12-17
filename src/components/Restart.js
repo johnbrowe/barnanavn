@@ -16,13 +16,17 @@ class Restart extends Component {
         store.dispatch(restart());
         store.dispatch(selectGender(null));
         localStorage.clear();
-        this.props.history.push('/');        
+        this.props.history.push('/');
+    }
+
+    shouldDisplayRestart() {
+        return window.location.pathname == "/" ? "hide" : "";
     }
 
     render() {
         return (
-            <div className="navbar">
-                <a className="restart" onClick={this.restart.bind(this)}><MdBack></MdBack> Byrja av nýggjum</a>
+            <div className={this.shouldDisplayRestart() + " navbar"}>
+                <a className="restart" onClick={this.restart.bind(this)}><span className="back-icon"><MdBack></MdBack></span> Byrja av nýggjum</a>
             </div>
         );
     }

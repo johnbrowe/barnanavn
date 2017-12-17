@@ -4,6 +4,7 @@ import FaMale from 'react-icons/lib/fa/male';
 import { selectGender } from '../actions/gender-actions';
 import store from '../store.js';
 import { withRouter } from 'react-router';
+import Menu from './Menu.js';
 
 
 class SelectGender extends Component {
@@ -19,14 +20,21 @@ class SelectGender extends Component {
     }
 
     render() {
-        return (
-            <div className="section">
-                <h1>Vel kyn</h1>
-                <br />
-                <button className="button is-large" onClick={this.selectFemale}><FaFemale></FaFemale> &nbsp;Genta</button>
-                <button className="button is-large" onClick={this.selectMale}><FaMale></FaMale> &nbsp;Drongur</button>
+        return <section className="gender">
+            <div>
+              <img src="images/navnabretti.svg" alt="Navnabretti logo" />
             </div>
-        );
+            <div className="gender-box">
+              <div className="buttons">
+                <button className="button girl" onClick={this.selectFemale}>
+                  Genta
+                </button>
+                <button className="button boy" onClick={this.selectMale}>
+                  Drongur
+                </button>
+              </div>
+            </div>
+          </section>;
     }
 }
 
