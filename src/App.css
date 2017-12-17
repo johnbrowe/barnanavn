@@ -75,7 +75,6 @@ html, body {
 body {
   font-family: 'Raleway', sans-serif;  
   background-color: white;
-  background: url("/svgs/background.svg") bottom center no-repeat;
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: left top;
