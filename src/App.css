@@ -49,11 +49,10 @@ table {
 /* RESET END */
 
 :root {
-  --first-color: #C88E2D;
-  --second-color: #5187B5;
-  --second-color-ligther: #A8C3DA;
-  --third-color: #819B42;
-  --fourth-color: #D13945;
+  --first-color: #000D29;
+  --second-color: rgba(0, 13, 41, 0.50);
+  --third-color: #118C8B;
+  --fourth-color: #F2746B;
   --xl-size: 57.665rem;
   --l-size: 25.629rem;
   --lm-size: 11.391rem;
@@ -125,7 +124,7 @@ li {
 }
 
 li .active {
-  font-weight: 600; 
+  font-weight: 700; 
 }
 
 .name-box {
@@ -148,7 +147,7 @@ li .active {
 
 .name-description {
   font-family: 'Merriweather', serif;
-  color: #D4C4A4;
+  color: var(--second-color);
   font-size: var(--s-size);
 }
 
@@ -238,7 +237,7 @@ li .active {
 .tab-menu {
   display: flex;
   justify-content: space-evenly;
-  border-bottom: 1px solid var(--second-color-ligther);
+  border-bottom: 1px solid var(--second-color);
   margin-bottom: var(--m-size);  
 }
 
@@ -256,8 +255,8 @@ li .active {
 }
 
 .tab-menu li:nth-of-type(2) {
-  border-left: 1px solid var(--second-color-ligther);
-  border-right: 1px solid var(--second-color-ligther);
+  border-left: 1px solid var(--second-color);
+  border-right: 1px solid var(--second-color);
 }
 
 /* Animations */
@@ -404,19 +403,13 @@ li .active {
     margin-bottom: var(--s-size);    
   }
 
-  /*.name-box {
-    height: 20rem;
-    margin-bottom: var(--s-size);
-    height: auto;
-  }*/
-
   .tab-menu {
-    border-bottom: 3px solid var(--second-color-ligther);
+    border-bottom: 3px solid var(--second-color);
   }
 
   .tab-menu li:nth-of-type(2) {
-    border-left: 3px solid var(--second-color-ligther);
-    border-right: 3px solid var(--second-color-ligther);
+    border-left: 3px solid var(--second-color);
+    border-right: 3px solid var(--second-color);
   }  
 
   .list li {
