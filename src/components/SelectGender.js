@@ -22,7 +22,7 @@ class SelectGender extends Component {
     render() {
         return <section className="gender">
             <div>
-              <img src="images/navnabretti.svg" alt="Navnabretti logo" />
+              <img class="logo" src="images/navnabretti.svg" alt="Navnabretti logo" />
             </div>
             <div className="gender-box">
               <div className="buttons">

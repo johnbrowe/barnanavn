@@ -100,6 +100,10 @@ h1.display-name {
   overflow-wrap: break-word;  
 }
 
+.logo {
+  max-width: 100%;
+}
+
 ul.list {
   display: flex;
   flex-flow: row wrap;
