@@ -20,7 +20,7 @@ class Progress extends Component {
     render() {
         return (
             <div className="progress-box">
-                <Line percent={this.progress()} strokeWidth="1.5" trailWidth="1.5" strokeColor="#C88E2D" trailColor="#D4C4A4" strokeLinecap="square"/>
+                <Line percent={this.progress()} strokeWidth="1.5" trailWidth="1.5" strokeColor="#118C8B" trailColor="#F1f1f1" strokeLinecap="square"/>
             </div>
         );
     }

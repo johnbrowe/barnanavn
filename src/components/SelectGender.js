@@ -20,17 +20,21 @@ class SelectGender extends Component {
     }
 
     render() {
-        return (
-            <section className="gender">
-                <h1 className="display-name">Vel kyn</h1>
-                <div className="gender-box">
-                    <div className="buttons">
-                        <button className="button girl" onClick={this.selectFemale}>Genta</button>
-                        <button className="button boy" onClick={this.selectMale}>Drongur</button>
-                    </div>
-                </div>
-            </section>
-        );
+        return <section className="gender">
+            <div>
+              <img src="images/navnabretti.svg" alt="Navnabretti logo" />
+            </div>
+            <div className="gender-box">
+              <div className="buttons">
+                <button className="button girl" onClick={this.selectFemale}>
+                  Genta
+                </button>
+                <button className="button boy" onClick={this.selectMale}>
+                  Drongur
+                </button>
+              </div>
+            </div>
+          </section>;
     }
 }
 
