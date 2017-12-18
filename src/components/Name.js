@@ -47,11 +47,10 @@ class Name extends Component {
 
 
 const mapStateToProps = function (store) {
-
     return {
         names: store.names,
         gender: store.gender
     };
-}
+};
 
 export default connect(mapStateToProps)(Name);

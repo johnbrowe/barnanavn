@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import SelectGender from './components/SelectGender.js';
 import store from './store.js';
 import Restart from './components/Restart.js';
+import Info from './components/Info.js';
 import Progress from './components/Progress.js';
 import Action from './components/Action.js';
 import AcceptedList from './components/AcceptedList.js';
@@ -22,6 +23,7 @@ class App extends Component {
     return (
       <div className="App">
         <Restart></Restart>
+        <Info></Info>
         <div className="action-container">
           <div className="action-box">
             <Switch>
