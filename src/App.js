@@ -3,7 +3,6 @@ import './App.css';
 import { connect } from 'react-redux';
 import SelectGender from './components/SelectGender.js';
 import store from './store.js';
-import Restart from './components/Restart.js';
 import Info from './components/Info.js';
 import Progress from './components/Progress.js';
 import Action from './components/Action.js';
@@ -11,6 +10,7 @@ import AcceptedList from './components/AcceptedList.js';
 import RejectedList from './components/RejectedList.js';
 import { Switch, Route } from 'react-router-dom'
 import { withRouter } from 'react-router';
+import GlobalMenu from './components/GlobalMenu';
 
 
 class App extends Component {
@@ -22,8 +22,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Restart></Restart>
-        <Info></Info>
+        <GlobalMenu />
         <div className="action-container">
           <div className="action-box">
             <Switch>
@@ -31,6 +30,7 @@ class App extends Component {
               <Route exact path='/navn' component={Action} />
               <Route exact path='/nei' component={RejectedList} />
               <Route exact path='/ja' component={AcceptedList} />
+              <Route exact path='/info' component={Info} />
             </Switch>
           </div>
         </div>
@@ -43,7 +43,7 @@ const mapStateToProps = function (store) {
   return {
     gender: store.gender
   };
-}
+};
 
 
 export default withRouter(connect(mapStateToProps)(App));

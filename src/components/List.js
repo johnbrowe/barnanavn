@@ -45,6 +45,6 @@ const mapStateToProps = function (store) {
   return {
     accepted: store.names.accepted
   };
-}
+};
 
 export default connect(mapStateToProps)(List);

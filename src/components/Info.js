@@ -14,30 +14,24 @@ class Restart extends Component {
         super(props);
     }
 
-    closeModal(){
-        console.log("CLOSE");
-    }
-
     render() {
         return (
             <div className="info">
                 <div className="info-window">
-                    <div className="close" onClick={this.closeModal}><MdClose></MdClose></div>
-
                     <h2>Søgan um barnanavn</h2>
                     <p>
-                        Appin var gjørd vid tí endamálid at finna eitt navn til mítt nýfødda barn. Eg helt tad var eitt sindur óinteresant 
-                        at ganga í gjøgnum nøvnini frá á-z. Eg var sikkur uppá at hetta kundi gerast meiri visuelt spennandi 
+                        Appin var gjørd vid tí endamálid at finna eitt navn til mítt nýfødda barn. Eg helt tad var eitt sindur óinteresant
+                        at ganga í gjøgnum nøvnini frá á-z. Eg var sikkur uppá at hetta kundi gerast meiri visuelt spennandi
                         og eg hevdi ein mistanka um at nøvnini komu ikki heilt til sín rætt í alfabetiskum ordan. Útfrá hesum útkom
                         barnanavn appin. Okkara barn fekk navnid <b>Jónatan</b>, vónandi finnur tú eisini eitt til títt barn.
                         <br />
                         <br />
                         Bestu ynskir<br />
-                        <b>John Høj Andreassen</b>      
+                        <b>John Høj Andreassen</b>
                     </p>
                     <br />
                     <h2>
-                        FAQ            
+                        FAQ
                     </h2>
                     <ul>
                         <li>
