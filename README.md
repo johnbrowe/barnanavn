@@ -1,4 +1,4 @@
-#Barnanavn
+#Navnabretti
 This is an application which makes it more enjoyable to itereate through all the faroese names.
 You have the possibility to divide the names into the ones you like and don't like.
 
