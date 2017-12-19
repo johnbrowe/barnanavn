@@ -54,8 +54,8 @@ class GlobalMenu extends Component {
         return (
             <div className="navbar">
                 <div>
-                    <a className={this.hideOn(["/", "/info"]) + " restart"} onClick={this.restart}><span className="suttle-icon"><MdBack></MdBack></span> Alt umaftur</a>
-                    <a className={this.showOn(["/info"]) + " restart"} onClick={this.goBack}><span className="suttle-icon"><MdBack></MdBack></span> Aftur</a>
+                    <a className={this.hideOn(["/", "/info"]) + " suttle-link"} onClick={this.restart}><span className="suttle-icon"><MdBack></MdBack></span> Alt umaftur</a>
+                    <a className={this.showOn(["/info"]) + " suttle-link"} onClick={this.goBack}><span className="suttle-icon"><MdBack></MdBack></span> Aftur</a>
                 </div>
                 <div>
                     <a href="./info" className={this.hideOn(["/info"])}><span className="suttle-icon"><MdInfo></MdInfo></span></a>
