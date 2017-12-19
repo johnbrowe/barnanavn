@@ -10,9 +10,7 @@ import { Switch, Route } from 'react-router-dom'
 import { withRouter } from 'react-router';
 import GlobalMenu from './components/GlobalMenu';
 
-
 class App extends Component {
-
     constructor(props) {
         super(props);
     }
@@ -42,7 +40,6 @@ const mapStateToProps = function(store) {
         gender: store.gender
     };
 };
-
 
 export default withRouter(connect(mapStateToProps)(App));
 
