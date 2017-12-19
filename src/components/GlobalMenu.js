@@ -8,17 +8,15 @@ import { withRouter } from 'react-router';
 import MdBack from 'react-icons/lib/md/keyboard-arrow-left';
 import MdInfo from 'react-icons/lib/md/info-outline';
 
-
 class GlobalMenu extends Component {
-
     constructor(props) {
         super(props);
 
         // Bindings
         this.goBack = this.goBack.bind(this);
         this.restart = this.restart.bind(this);
-        this.showBack = this.showBack.bind(this);
-        this.showRestart = this.showRestart.bind(this);
+        this.hideOn = this.hideOn.bind(this);
+        this.showOn = this.showOn.bind(this);
     }
 
     restart() {
@@ -32,39 +30,35 @@ class GlobalMenu extends Component {
         this.props.history.goBack();
     }
 
+    hideOn(arr) {
+        const pathname = window.location.pathname;
 
-    showBack() {
-        let shouldDisplay = "";
-        const pathname    = window.location.pathname;
-
-        if(pathname !== "/info") {
-            shouldDisplay = "hide";
+        if(arr.includes(pathname)){
+            return 'hide';
         }
 
-        return shouldDisplay;
+        return "";
     }
 
-    showRestart() {
-        let shouldDisplay = "";
-        const pathname    = window.location.pathname;
+    showOn(arr) {
+        const pathname = window.location.pathname;
 
-        if(pathname === "/") {
-            shouldDisplay = "hide";
-        } else if(pathname === "/info") {
-            shouldDisplay = "hide";
+        if(arr.includes(pathname)){
+            return '';
         }
-        return shouldDisplay;
+
+        return 'hide';
     }
 
     render() {
         return (
             <div className="navbar">
                 <div>
-                    <a className={this.showRestart() + " restart"} onClick={this.restart}><span className="suttle-icon"><MdBack></MdBack></span> Alt umaftur</a>
-                    <a className={this.showBack() + " restart"} onClick={this.goBack}><span className="suttle-icon"><MdBack></MdBack></span> Aftur</a>
+                    <a className={this.hideOn(["/", "/info"]) + " restart"} onClick={this.restart}><span className="suttle-icon"><MdBack></MdBack></span> Alt umaftur</a>
+                    <a className={this.showOn(["/info"]) + " restart"} onClick={this.goBack}><span className="suttle-icon"><MdBack></MdBack></span> Aftur</a>
                 </div>
                 <div>
-                    <a href="./info"><span className="suttle-icon"><MdInfo></MdInfo></span></a>
+                    <a href="./info" className={this.hideOn(["/info"])}><span className="suttle-icon"><MdInfo></MdInfo></span></a>
                 </div>
             </div>
         );
