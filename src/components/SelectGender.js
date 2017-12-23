@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
-import FaFemale from 'react-icons/lib/fa/female';
-import FaMale from 'react-icons/lib/fa/male';
 import { selectGender } from '../actions/gender-actions';
 import store from '../store.js';
 import { withRouter } from 'react-router';
-import Menu from './Menu.js';
-
 
 class SelectGender extends Component {
 
     selectFemale = () => {
         store.dispatch(selectGender('female'));
         this.props.history.push('/navn');
-    }
+    };
 
     selectMale = () => {
         store.dispatch(selectGender('male'));
         this.props.history.push('/navn');
-    }
+    };
 
     render() {
         return <section className="gender">
             <div>
-              <img src="images/navnabretti.svg" alt="Navnabretti logo" />
+              <img className="logo" src="images/navnabretti.svg" alt="Navnabretti logo" />
             </div>
             <div className="gender-box">
               <div className="buttons">
