@@ -169,8 +169,12 @@ li .active {
   flex-flow: column;
 }
 
+.logo {
+  width: 100%;
+  max-width: 100%;
+}
+
 .action-container {
-  margin: var(--s-size) auto auto auto;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -427,6 +431,7 @@ li .active {
   }
 
   .action-container {
+    margin: var(--s-size) auto auto auto;
     width: 100%;
   }
 
