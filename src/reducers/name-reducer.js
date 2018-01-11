@@ -10,11 +10,10 @@ const initialState = {
     accepted: (typeof localStorage["acceptedNames"] != "undefined") ? JSON.parse(localStorage.getItem('acceptedNames')) : [],
     rejected: (typeof localStorage["rejectedNames"] != "undefined") ? JSON.parse(localStorage.getItem('rejectedNames')) : [],
     index: 0
-}
+};
 
 initialState.male = handleAllAcceptedNames(initialState.male);
 initialState.female = handleAllAcceptedNames(initialState.female);
-
 
 export default function (state = initialState, action) {
     switch (action.type) {

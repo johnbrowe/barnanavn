@@ -3,6 +3,7 @@ import './../App.css';
 import { connect } from 'react-redux';
 import store from './../store.js';
 import { restart } from '../actions/name-actions';
+import { reEvaluate } from '../actions/menu-actions';
 import { selectGender } from '../actions/gender-actions';
 import { withRouter } from 'react-router';
 import MdBack from 'react-icons/lib/md/keyboard-arrow-left';
@@ -15,8 +16,7 @@ class GlobalMenu extends Component {
         // Bindings
         this.goBack = this.goBack.bind(this);
         this.restart = this.restart.bind(this);
-        this.hideOn = this.hideOn.bind(this);
-        this.showOn = this.showOn.bind(this);
+        this.hide = this.hide.bind(this);
     }
 
     restart() {
@@ -30,35 +30,23 @@ class GlobalMenu extends Component {
         this.props.history.goBack();
     }
 
-    hideOn(arr) {
-        const pathname = window.location.pathname;
-
-        if(arr.includes(pathname)){
-            return 'hide';
-        }
-
-        return "";
-    }
-
-    showOn(arr) {
-        const pathname = window.location.pathname;
-
-        if(arr.includes(pathname)){
+    hide(item) {
+        if(this.props.menu.menuState[item]){
             return '';
         }
 
-        return 'hide';
+        return "hide";
     }
 
     render() {
         return (
             <div className="navbar">
                 <div>
-                    <a className={this.hideOn(["/", "/info"]) + " suttle-link"} onClick={this.restart}><span className="suttle-icon"><MdBack></MdBack></span> Alt umaftur</a>
-                    <a className={this.showOn(["/info"]) + " suttle-link"} onClick={this.goBack}><span className="suttle-icon"><MdBack></MdBack></span> Aftur</a>
+                    <a className={this.hide('restart') + " suttle-link"} onClick={this.restart}><span className="suttle-icon"><MdBack></MdBack></span> Alt umaftur</a>
+                    <a className={this.hide('back') + " suttle-link"}  onClick={this.goBack}><span className="suttle-icon"><MdBack></MdBack></span> Aftur</a>
                 </div>
                 <div>
-                    <a href="./info" className={this.hideOn(["/info"])}><span className="suttle-icon"><MdInfo></MdInfo></span></a>
+                    <a href="./info" className={this.hide('info')}><span className="suttle-icon"><MdInfo></MdInfo></span></a>
                 </div>
             </div>
         );
@@ -67,7 +55,9 @@ class GlobalMenu extends Component {
 
 const GlobalMenuWithRouter = withRouter(GlobalMenu);
 const mapStateToProps = function (store) {
-    return {};
+    return {
+        menu: store.menu
+    };
 };
 
 export default connect(mapStateToProps)(GlobalMenuWithRouter);
