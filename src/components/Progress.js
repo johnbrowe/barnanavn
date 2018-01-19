@@ -32,6 +32,6 @@ const mapStateToProps = function (store) {
         names: store.names,
         gender: store.gender
     };
-}
+};
 
 export default connect(mapStateToProps)(Progress);
