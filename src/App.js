@@ -7,10 +7,9 @@ import Info from './components/Info';
 import Action from './components/Action';
 import AcceptedList from './components/AcceptedList';
 import RejectedList from './components/RejectedList';
-import { Switch } from 'react-router-dom'
 import { withRouter } from 'react-router';
 import GlobalMenu from './components/GlobalMenu';
-import CustomRoute from './components/CustomRoute.js';
+import { Switch, Route } from 'react-router-dom'
 
 class App extends Component {
     constructor(props) {
@@ -24,11 +23,11 @@ class App extends Component {
                 <div className="action-container">
                     <div className="action-box">
                         <Switch>
-                            <CustomRoute exact path='/' component={SelectGender}/>
-                            <CustomRoute exact path='/navn' component={Action}/>
-                            <CustomRoute exact path='/nei' component={RejectedList}/>
-                            <CustomRoute exact path='/ja' component={AcceptedList}/>
-                            <CustomRoute exact path='/info' component={Info}/>
+                            <Route exact path='/' component={SelectGender}/>
+                            <Route exact path='/navn' component={Action}/>
+                            <Route exact path='/nei' component={RejectedList}/>
+                            <Route exact path='/ja' component={AcceptedList}/>
+                            <Route exact path='/info' component={Info}/>
                         </Switch>
                     </div>
                 </div>
