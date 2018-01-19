@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createStore } from 'redux'
 import './App.css';
 import { connect } from 'react-redux';
 import SelectGender from './components/SelectGender.js';
