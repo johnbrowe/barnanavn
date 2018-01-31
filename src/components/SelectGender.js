@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { selectGender } from '../actions/gender-actions';
 import store from '../store.js';
 import { withRouter } from 'react-router';
+import { render } from '../actions/menu-actions';
 
 class SelectGender extends Component {
+
+  componentDidMount() {
+      store.dispatch(render());
+    }
 
     selectFemale = () => {
         store.dispatch(selectGender('female'));

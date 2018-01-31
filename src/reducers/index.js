@@ -8,7 +8,7 @@ const allReducers = {
     names : nameReducer,
     gender: genderReducer,
     info  : infoReducer,
-    menu : menuReducer 
+    menu  : menuReducer,
 };
 
 const rootReducer = combineReducers(allReducers);

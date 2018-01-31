@@ -8,6 +8,6 @@ const Menu = () => (
         <li><NavLink to="/navn">Navn</NavLink></li>
         <li><NavLink to="/ja">Ja</NavLink></li>
     </ul>
-);
+);  
 
 export default Menu;

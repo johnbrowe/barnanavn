@@ -1,8 +1,7 @@
-export const REEVALUATE = 'REEVALUATE';
+export const RENDER = 'RENDER';
 
-export function reEvaluate() {
-
+export function render() {
     return {
-        type: REEVALUATE
+        type: RENDER
     }
 }

@@ -1,35 +1,55 @@
-import  { REEVALUATE }  from '../actions/menu-actions';
+import  { RENDER }  from '../actions/menu-actions';
 
 const initialState = {
     menuState: {
-        restart: false,
-        back   : true,
-        info   : true
+        info: false,
+        back: false,
+        restart: false
     }
 };
 
+const HOME = "/";
+const NAME = "/navn";
+const YES = "/ja";
+const NO = "/nei";
+const INFO = "/info";
+
 export default function (state = initialState, action) {
     switch (action.type) {
-        case REEVALUATE: {
-            switch (window.location.pathname) {
-                case "/": {
-                    state.menuState.info = true;
-                    return state;
+        case RENDER: {
+            const pathname = window.location.pathname;
+            let menuState = state;
+
+            switch (pathname) {
+                case HOME: {
+                    menuState = {
+                        info: true,
+                        back: false,
+                        restart: false
+                    }
+                    break;
                 }
-                case "/info": {
-                    state.menuState.back = true;
-                    return state;
+                case YES: 
+                case NO: 
+                case NAME: {
+                    menuState = {
+                        info: true,
+                        back: false,
+                        restart: true
+                    }
+                    break;
                 }
-                case "/navn":
-                case "/ja":
-                case "/nei": {
-                    state.menuState.restart = true;
-                    state.menuState.info = true;
-                    return state;
+                case INFO: {
+                    menuState = {
+                        info: false,
+                        back: true,
+                        restart: false
+                    }
+                    break;
                 }
-                default:
-                    return state;
             }
+
+            return {...state, menuState};
         }
         default:
             return state;
