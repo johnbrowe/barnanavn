@@ -21,6 +21,7 @@ class GlobalMenu extends Component {
 
     restart() {
         store.dispatch(restart());
+        store.dispatch(reEvaluate());
         store.dispatch(selectGender(null));
         localStorage.clear();
         this.props.history.push('/');

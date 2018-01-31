@@ -11,8 +11,6 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
         case REEVALUATE: {
-            console.log('oiiiiiiiiiiiiiiiiiiiiiii');
-            console.log(window.location.pathname);
             switch (window.location.pathname) {
                 case "/": {
                     state.menuState.info = true;
@@ -22,18 +20,8 @@ export default function (state = initialState, action) {
                     state.menuState.back = true;
                     return state;
                 }
-                case "/navn": {
-                    state.menuState.restart = true;
-                    state.menuState.info = true;
-                    console.log('state')
-                    console.log(state)
-                    return state;
-                }
-                case "/ja": {
-                    state.menuState.restart = true;
-                    state.menuState.info = true;
-                    return state;
-                }
+                case "/navn":
+                case "/ja":
                 case "/nei": {
                     state.menuState.restart = true;
                     state.menuState.info = true;
