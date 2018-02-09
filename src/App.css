@@ -58,6 +58,7 @@ table {
   --lm-size: 11.391rem;
   --m-size: 5.063rem;
   --s-size: 3.375rem;
+  --ms-size: 2.5rem;
   --xs-size: 1.5rem;
   --default-size: 1rem;
   --text-size: 2rem;
@@ -82,6 +83,12 @@ body {
   width: 100%;
   font-size: var(--m-size);
   color: var(--first-color);
+}
+
+.left-menu {
+  font-size: var(--ms-size);
+  display: flex;
+  align-items: center;
 }
 
 a {

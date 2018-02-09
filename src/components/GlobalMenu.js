@@ -19,7 +19,6 @@ class GlobalMenu extends Component {
 
     restart() {
         store.dispatch(restart());
-        store.dispatch(reEvaluate());
         store.dispatch(selectGender(null));
         localStorage.clear();
         this.props.history.push('/');
@@ -32,7 +31,7 @@ class GlobalMenu extends Component {
     render() {
         return (
             <div className="navbar">
-                <div>
+                <div className="left-menu">
                     <a className={this.props.menu.restart ? "" : "hide" + " suttle-link"} onClick={this.restart}><span className="suttle-icon"><MdBack></MdBack></span> Alt umaftur</a>
                     <a className={this.props.menu.back ? "" : "hide" + " suttle-link"} onClick={this.goBack}><span className="suttle-icon"><MdBack></MdBack></span> Aftur</a>
                 </div>

@@ -34,7 +34,7 @@ class RejectedList extends Component {
         <Menu></Menu>
         <p>Nøvn:</p>
         <ul className="name-list">
-          {this.noneSelectedYetMsg()}
+            <li>{ this.noneSelectedYetMsg() }</li>
 
           {this.props.rejected.map((data, i) => {
             return <li key={i}>

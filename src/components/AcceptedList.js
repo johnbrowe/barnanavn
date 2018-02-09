@@ -35,7 +35,7 @@ class List extends Component {
         <Menu></Menu>
         <p>Nøvn:</p>
         <ul className="name-list">
-          {this.noneSelectedYetMsg()}
+            <li>{ this.noneSelectedYetMsg() }</li>
 
           {this.props.accepted.map((data, i) => {
             return <li key={data.id}>
