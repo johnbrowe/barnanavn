@@ -34,12 +34,12 @@ class Name extends Component {
     render() {
         return (
             <div>
-                <ReactCSSTransitionReplace
-                    transitionName="fade-wait"
-                    transitionEnterTimeout={1000}
-                    transitionLeaveTimeout={1000}>
+                {/*<ReactCSSTransitionReplace*/}
+                    {/*transitionName="fade-wait"*/}
+                    {/*transitionEnterTimeout={1000}*/}
+                    {/*transitionLeaveTimeout={1000}>*/}
                     <h1 className="display-name" key={this.showID()}>{this.showName()}</h1>
-                </ReactCSSTransitionReplace>
+                {/*</ReactCSSTransitionReplace>*/}
             </div>
         );
     }
