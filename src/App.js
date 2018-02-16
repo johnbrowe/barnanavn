@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import SelectGender from './components/SelectGender.js';
-import store from './store.js';
 import Restart from './components/Restart.js';
-import Progress from './components/Progress.js';
 import Action from './components/Action.js';
 import AcceptedList from './components/AcceptedList.js';
 import RejectedList from './components/RejectedList.js';
 import { Switch, Route } from 'react-router-dom'
 import { withRouter } from 'react-router';
-
 
 class App extends Component {
 
