@@ -18,7 +18,7 @@ class List extends Component {
 
   noneSelectedYetMsg() {
     if (this.props.accepted.length == 0) {
-      return "Onki navn"
+      return "Einki navn";
     } else {
       return "";
     }
