@@ -18,7 +18,7 @@ class RejectedList extends Component {
 
   noneSelectedYetMsg() {
     if (this.props.rejected.length == 0) {
-      return "Onki navn"
+      return "Einki navn";
     } else {
       return "";
     }

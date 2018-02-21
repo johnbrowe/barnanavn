@@ -87,6 +87,10 @@ a {
   cursor: pointer;
 }
 
+b {
+  font-weight: 600;
+}
+
 h1 {
   font-family: 'Merriweather', serif;
   color: var(--first-color);
