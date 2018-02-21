@@ -1,7 +1,8 @@
 # Todo list
+* [ ] Setup develop branch and test server
+* [ ] Setup tests of current functionality
 * [x] Double check if isFinished() works 
 * [x] Add shuffle method
-* [ ] Add test server
 * [ ] Update README.md
 * [x] Add redux
 * [x] Fix /myapp issue on build
