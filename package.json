@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "lodash": "^4.17.4",
+    "puppeteer": "^1.1.0",
     "rc-progress": "^2.2.2",
     "react": "^15.6.1",
     "react-css-transition-replace": "^2.2.1",
