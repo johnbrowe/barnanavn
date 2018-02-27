@@ -36,3 +36,19 @@ test('I should see a boy name', async () => {
 
     browser.close();
 }, 16000);
+
+test('I be redirected to homescreen', async () => {
+    let browser = await puppeteer.launch({
+        headless: false,
+    });
+    let page = await browser.newPage();
+
+    await page.goto('http://localhost:3000/navn');
+    await page.waitForSelector('.App');
+
+    const html = await page.$eval('.action-container', e => e.innerHTML);
+    expect(html).toContain('Drongur');
+    expect(html).toContain('Genta');
+    browser.close();
+}, 16000);
+    
