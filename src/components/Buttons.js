@@ -31,7 +31,6 @@ class Buttons extends Component {
         store.dispatch(increment());
     }
 
-
     render() {
         return (
             <div className="buttons">

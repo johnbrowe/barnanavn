@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './../App.css';
-import { CSSTransitionGroup } from 'react-transition-group'
 import { connect } from 'react-redux';
-import store from './../store.js';
-
 
 class List extends Component {
 
@@ -45,6 +42,6 @@ const mapStateToProps = function (store) {
   return {
     accepted: store.names.accepted
   };
-}
+};
 
 export default connect(mapStateToProps)(List);
