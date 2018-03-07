@@ -6,6 +6,7 @@
 * [ ] Update README.md
 * [x] Add redux
 * [x] Fix /myapp issue on build
+* [ ] Inline SVG
 
 # Todo feature list
 * [x] As a user I should should see a rejected and accepted list
