@@ -8,11 +8,26 @@ import AcceptedList from './components/AcceptedList.js';
 import RejectedList from './components/RejectedList.js';
 import { Switch, Route } from 'react-router-dom'
 import { withRouter } from 'react-router';
+import store from "./store";
+import {restart} from "./actions/name-actions";
+import {selectGender} from "./actions/gender-actions";
 
 class App extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount(){
+      if(!this.props.gender.selected){
+          store.dispatch(restart());
+          store.dispatch(selectGender(null));
+          localStorage.clear();
+          this.props.history.push('/');
+      } else {
+          store.dispatch(selectGender(this.props.gender.selected));
+          this.props.history.push('/navn');
+      }
   }
 
   render() {
