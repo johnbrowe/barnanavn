@@ -1,5 +1,5 @@
 # Todo list
-* [ ] Setup develop branch and test server
+* [x] Setup develop branch and test server
 * [ ] Setup tests of current functionality
 * [x] Double check if isFinished() works 
 * [x] Add shuffle method
