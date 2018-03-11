@@ -17,15 +17,6 @@ class Action extends Component {
         super(props);
     }
 
-    componentDidMount(){
-        if(!this.props.gender.selected){
-            store.dispatch(restart());
-            store.dispatch(selectGender(null));
-            localStorage.clear();
-            this.props.history.push('/');
-        }
-    }
-
     render() {
         return (
             <section>
