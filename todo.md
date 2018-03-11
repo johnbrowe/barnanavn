@@ -18,3 +18,4 @@
 # Known bugs
 * [x] If a user hits URL "/navn" for the for the first time, screen will be blank.
 * [x] If a user hits URL "/" and select girl having been on selecting boy names, it will mix names.
+* [ ] If a user hits URL "/ja" you will be redirected to /navn
