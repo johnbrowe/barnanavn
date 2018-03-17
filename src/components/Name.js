@@ -28,7 +28,7 @@ class Name extends Component {
             <div>
                 <CSSTransitionGroup transitionName="display-name"
                                     transitionEnterTimeout={1000}
-                                    transitionLeaveTimeout={100}>
+                                    transitionLeaveTimeout={0}>
                     <h1 className="display-name" key={this.showID()}>{this.showName()}</h1>
                 </CSSTransitionGroup>
             </div>

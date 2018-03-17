@@ -9,7 +9,6 @@ class RejectedList extends Component {
 
     // Bindings
     this.noneSelectedYetMsg = this.noneSelectedYetMsg.bind(this);
-
   }
 
   noneSelectedYetMsg() {

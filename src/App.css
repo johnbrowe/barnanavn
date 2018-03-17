@@ -110,12 +110,13 @@ h1.display-name {
 
 .display-name-enter.display-name-enter-active {
   opacity: 1;
-  transition: opacity 1.1s ease;
+  transition: opacity 2s ease;
 }
 
 .display-name-leave.display-name-leave-active {
   opacity: 0;
-  transition: opacity 0.1s ease-in;
+  transition: opacity 0.1s;
+  transform: translateX(100%);
 }
 
 .logo {
