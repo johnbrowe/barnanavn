@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionReplace from 'react-css-transition-replace';
 import { connect } from 'react-redux';
-import store from '../store.js';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 class Name extends Component {
-
-    constructor(props) {
-        super(props);
-
-        // Bindings
-    }
-
     isFinished() {
         return (this.props.names[this.props.gender.selected].index + 1) > this.props.names[this.props.gender.selected].length
     }
@@ -34,12 +26,11 @@ class Name extends Component {
     render() {
         return (
             <div>
-                {/*<ReactCSSTransitionReplace*/}
-                    {/*transitionName="fade-wait"*/}
-                    {/*transitionEnterTimeout={1000}*/}
-                    {/*transitionLeaveTimeout={1000}>*/}
+                <CSSTransitionGroup transitionName="display-name"
+                                    transitionEnterTimeout={1000}
+                                    transitionLeaveTimeout={0}>
                     <h1 className="display-name" key={this.showID()}>{this.showName()}</h1>
-                {/*</ReactCSSTransitionReplace>*/}
+                </CSSTransitionGroup>
             </div>
         );
     }
