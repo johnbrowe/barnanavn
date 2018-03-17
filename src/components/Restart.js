@@ -7,11 +7,6 @@ import MdBack from 'react-icons/lib/md/keyboard-arrow-left';
 import { withRouter } from 'react-router';
 
 class Restart extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     restart() {
         store.dispatch(restart());
         store.dispatch(selectGender(null));
@@ -19,14 +14,14 @@ class Restart extends Component {
         this.props.history.push('/');
     }
 
-    shouldDisplayRestart() {
-        return window.location.pathname == "/" ? "hide" : "";
+    static shouldDisplayRestart() {
+        return window.location.pathname === "/" ? "hide" : "";
     }
 
     render() {
         return (
-            <div className={this.shouldDisplayRestart() + " navbar"}>
-                <a className="restart" onClick={this.restart.bind(this)}><span className="back-icon"><MdBack></MdBack></span> Byrja av nýggjum</a>
+            <div className={Restart.shouldDisplayRestart() + " navbar"}>
+                <a className="restart" onClick={this.restart.bind(this)}><span className="back-icon"><MdBack /></span> Byrja av nýggjum</a>
             </div>
         );
     }
@@ -38,5 +33,6 @@ const mapStateToProps = function (store) {
         names: store.names,
         gender: store.gender
     };
-}
+};
+
 export default connect(mapStateToProps)(RestartWithRouter);

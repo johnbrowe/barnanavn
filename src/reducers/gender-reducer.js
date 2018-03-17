@@ -1,7 +1,7 @@
 import  { SELECT_GENDER }  from '../actions/gender-actions';
 
 const initialState = {
-    selected: (typeof localStorage["gender"] != "undefined") ? JSON.parse(localStorage.getItem('gender')) : null
+    selected: (typeof localStorage["gender"] !== "undefined") ? JSON.parse(localStorage.getItem('gender')) : null
 }
 
 export default function (state = initialState, action) {

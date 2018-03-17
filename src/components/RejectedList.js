@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import Menu from './Menu.js';
 import './../App.css';
-import { CSSTransitionGroup } from 'react-transition-group'
 import { connect } from 'react-redux';
-import store from './../store.js';
-
 
 class RejectedList extends Component {
-
   constructor(props) {
     super(props);
 
@@ -17,7 +13,7 @@ class RejectedList extends Component {
   }
 
   noneSelectedYetMsg() {
-    if (this.props.rejected.length == 0) {
+    if (this.props.rejected.length === 0) {
       return "Einki navn";
     } else {
       return "";
@@ -27,7 +23,7 @@ class RejectedList extends Component {
   render() {
     return (
       <section>
-        <Menu></Menu>
+        <Menu />
         <ul>
           <li><b>Nøvn:</b></li>
           {this.noneSelectedYetMsg()}
@@ -47,6 +43,6 @@ const mapStateToProps = function (store) {
   return {
     rejected: store.names.rejected
   };
-}
+};
 
 export default connect(mapStateToProps)(RejectedList);

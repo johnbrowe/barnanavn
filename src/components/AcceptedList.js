@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
 import './../App.css';
 import Menu from './Menu.js';
-import { CSSTransitionGroup } from 'react-transition-group'
 import { connect } from 'react-redux';
-import store from './../store.js';
-
 
 class List extends Component {
-
   constructor(props) {
     super(props);
 
     // Bindings
     this.noneSelectedYetMsg = this.noneSelectedYetMsg.bind(this);
-
   }
 
   noneSelectedYetMsg() {
-    if (this.props.accepted.length == 0) {
+    if (this.props.accepted.length === 0) {
       return "Einki navn";
     } else {
       return "";
@@ -27,7 +22,7 @@ class List extends Component {
   render() {
     return (
       <section>
-        <Menu></Menu>
+        <Menu />
         <ul>
           <li><b>Nøvn:</b></li>
           {this.noneSelectedYetMsg()}
@@ -47,6 +42,6 @@ const mapStateToProps = function (store) {
   return {
     accepted: store.names.accepted
   };
-}
+};
 
 export default connect(mapStateToProps)(List);

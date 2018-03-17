@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionReplace from 'react-css-transition-replace';
 import MdCheck from 'react-icons/lib/md/check';
 import MdClear from 'react-icons/lib/md/clear';
 import { addAcceptName, addRejectName, increment } from '../actions/name-actions';
@@ -48,11 +47,11 @@ class Buttons extends Component {
         return (
             <div className="buttons">
                 <button className="button button-no" disabled={this.isFinished() || this.state.buttonDisable} onClick={this.rejectName}>
-                    <MdClear></MdClear>
+                    <MdClear />
                 </button>
                 &nbsp;&nbsp;&nbsp;
                 <button className="button button-yes" disabled={this.isFinished() || this.state.buttonDisable} onClick={this.acceptName}>
-                    <MdCheck></MdCheck>
+                    <MdCheck />
                 </button>
             </div>
         );
