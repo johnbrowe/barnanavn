@@ -104,6 +104,20 @@ h1.display-name {
   overflow-wrap: break-word;  
 }
 
+.display-name-enter {
+  opacity: 0;
+}
+
+.display-name-enter.display-name-enter-active {
+  opacity: 1;
+  transition: opacity 1.1s ease;
+}
+
+.display-name-leave.display-name-leave-active {
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
+}
+
 .logo {
   max-width: 100%;
 }
@@ -424,4 +438,3 @@ li .active {
     width: 33%;
   }
 }
-
