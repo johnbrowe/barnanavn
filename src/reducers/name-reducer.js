@@ -21,13 +21,13 @@ export default function(state = initialState, action) {
         case ADD_ACCEPT_NAME: {
             return {
                 ...state,
-                accepted: [...state.accepted, action.payload]
+                accepted: sortByName([...state.accepted, action.payload])
             }
         }
         case ADD_REJECT_NAME: {
             return {
                 ...state,
-                rejected: [...state.rejected, action.payload]
+                rejected: sortByName([...state.rejected, action.payload])
             }
         }
         case GET_NAMES: {
@@ -72,4 +72,12 @@ function isAlreadyAccepted(id) {
     });
 
     return !result;
+}
+
+function sortByName(array) {
+    return array.sort(function(a, b){
+        if(a.name < b.name) return -1;
+        if(a.name > b.name) return 1;
+        return 0;
+    })
 }
