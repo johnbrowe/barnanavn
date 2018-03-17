@@ -7,6 +7,8 @@ import Description from './Description.js';
 import Progress from './Progress.js';
 import Buttons from './Buttons.js';
 import Menu from './Menu.js';
+import {selectGender} from "../actions/gender-actions";
+import {restart} from "../actions/name-actions";
 
 
 class Action extends Component {
@@ -20,12 +22,18 @@ class Action extends Component {
             <section>
                 <Menu></Menu>
                 <div className="name-box">
-                    <Name></Name>
-                    <Description></Description>
+                    { !this.props.gender.selected ?
+                        ""
+                        : <div>
+                            <Name></Name>
+                            <Description></Description>
+                        </div>
+                    }
+
                 </div>
                 <Buttons></Buttons>
                 <Progress></Progress>
-            </section>                          
+            </section>
         );
     }
 }
