@@ -21,7 +21,7 @@ export default function(state = initialState, action) {
         case ADD_ACCEPT_NAME: {
             return {
                 ...state,
-                accepted: [...state.accepted, action.payload]
+                accepted: sortByName([...state.accepted, action.payload])
             }
         }
         case ADD_REJECT_NAME: {
