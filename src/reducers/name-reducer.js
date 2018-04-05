@@ -25,7 +25,6 @@ export default function(state = initialState, action) {
             }
         }
         case ADD_REJECT_NAME: {
-            console.log("HELLO WORKD");
             return {
                 ...state,
                 rejected: sortByName([...state.rejected, action.payload])
