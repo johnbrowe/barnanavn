@@ -1,6 +1,7 @@
 import { ADD_ACCEPT_NAME, ADD_REJECT_NAME, GET_NAMES, INCREMENT, RESTART } from '../actions/name-actions';
 import _ from 'lodash';
 import names from '../data/names.json';
+import faroese from 'faroese-alphabet-sort';
 
 const initialState = {
     male       : _.shuffle(names.male),
@@ -21,13 +22,13 @@ export default function(state = initialState, action) {
         case ADD_ACCEPT_NAME: {
             return {
                 ...state,
-                accepted: sortByName([...state.accepted, action.payload])
+                accepted: faroese.sortArrayOfObjects([...state.accepted, action.payload], 'name')
             }
         }
         case ADD_REJECT_NAME: {
             return {
                 ...state,
-                rejected: sortByName([...state.rejected, action.payload])
+                rejected: faroese.sortArrayOfObjects([...state.rejected, action.payload], 'name')
             }
         }
         case GET_NAMES: {
@@ -72,17 +73,4 @@ function isAlreadyAccepted(id) {
     });
 
     return !result;
-}
-
-const alphabet = {
-    "a": 1, "á": 2, "b": 3, "d": 4,"ð": 5, "e": 6, "f": 7, "g": 8, "h": 9, "i": 10, "í": 11, "j": 12, "k": 13, "l": 14, "m": 15, "n": 16, "o": 17, "ó": 18, "p": 19, "r": 20, "s": 21, "t": 22, "u": 23, "ú": 24, "v": 25, "y": 26, "ý": 27, "æ":28, "ø": 29
-};
-
-function sortByName(array) {
-    return array.sort((a, b) => {
-        for (let i = 0; i < a.name.length; i++) {
-            if(alphabet[a.name.charAt(i).toLowerCase()] < alphabet[b.name.charAt(i).toLowerCase()]) return -1;
-            if(alphabet[a.name.charAt(i).toLowerCase()] > alphabet[b.name.charAt(i).toLowerCase()]) return 1;
-        }
-    })
 }
