@@ -18,7 +18,7 @@ class SelectGender extends Component {
 
     render() {
         return <section className="gender">
-            <div>
+            <div className="logo">
                 <Logo />
             </div>
             <div className="gender-box">
