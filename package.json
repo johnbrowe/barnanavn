@@ -4,7 +4,7 @@
   "homepage": "https://navnabretti.com",
   "private": true,
   "dependencies": {
-    "faroese-alphabet-sort": "0.0.3",
+    "faroese-alphabet-sort": "0.0.5",
     "lodash": "^4.17.4",
     "puppeteer": "^1.1.0",
     "rc-progress": "^2.2.2",
