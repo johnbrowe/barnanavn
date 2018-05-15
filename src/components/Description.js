@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { CSSTransitionGroup } from 'react-transition-group';
 
 class Description extends Component {
     isFinished() {
@@ -24,13 +23,9 @@ class Description extends Component {
     render() {
         return (
             <div>
-                <CSSTransitionGroup transitionName="display-name"
-                                    transitionEnterTimeout={1000}
-                                    transitionLeaveTimeout={0}>
-                    <h2 className="name-description" key={this.showID()}>
-                        <small><i>{this.showDesc()}</i></small>
-                    </h2>
-                </CSSTransitionGroup>
+              <h2 className="name-description" key={this.showID()}>
+                  <small><i>{this.showDesc()}</i></small>
+              </h2>
             </div>
         );
     }
