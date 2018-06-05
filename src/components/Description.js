@@ -9,10 +9,10 @@ const Box = posed.div({
 
 
 class Description extends Component {
-  state = { isVisible: false };
+  state = { isVisible: true };
 
   componentWillReceiveProps() {
-    this.setState({ isVisible: false });
+    this.setState({ isVisible: true });
 
     setTimeout(() => {
       this.setState({ isVisible: true });

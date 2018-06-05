@@ -9,7 +9,7 @@ const Box = posed.div({
 
 class Name extends Component {
 
-  state = { isVisible: false };
+  state = { isVisible: true };
 
   componentWillReceiveProps() {
     this.setState({ isVisible: false });
