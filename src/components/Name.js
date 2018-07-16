@@ -40,7 +40,16 @@ class Name extends Component {
 
   showID() {
     if (!this.isFinished()) {
-      return this.props.names[this.props.gender.selected][this.props.names.index].id
+      try {
+        return this.props.names[this.props.gender.selected][this.props.names.index].id
+      } catch(error) {
+        window.Rollbar.error(
+          "There was an error:" + error,
+          "Object props names", this.props.names,
+          "Gender: " + this.props.gender.selected,
+          "Index: " + this.props.names.index
+        ); 
+      }
     } else {
       return "Onki navn eftir"
     }
