@@ -4,7 +4,7 @@ import posed from 'react-pose';
 
 const Box = posed.div({
   visible: { opacity: 1, transition: { duration: 500 } },
-  hidden: { opacity: 0, transition: { duration: 0 }}
+  hidden: { opacity: 0, transition: { duration: 0 } }
 });
 
 class Name extends Component {
@@ -13,14 +13,21 @@ class Name extends Component {
 
   componentWillReceiveProps() {
     this.setState({ isVisible: false });
-    
+
     setTimeout(() => {
       this.setState({ isVisible: true });
     }, 1);
   }
 
   isFinished() {
-    return (this.props.names[this.props.gender.selected].index + 1) > this.props.names[this.props.gender.selected].length
+    let count = 0;
+    if (this.props.gender.selected == 'male') {
+      count = this.props.names.maleCount;
+    } else {
+      count = this.props.names.femaleCount;
+    }
+
+    return (this.props.names.accepted.length + this.props.names.rejected.length) >= count;
   }
 
   showName() {
@@ -50,7 +57,6 @@ class Name extends Component {
 
 
 const mapStateToProps = function (store) {
-
   return {
     names: store.names,
     gender: store.gender

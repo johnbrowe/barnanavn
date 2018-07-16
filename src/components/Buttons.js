@@ -21,7 +21,14 @@ class Buttons extends Component {
     }
 
     isFinished() {
-        return (this.props.names.index + 1) > this.props.names.length
+      let count = 0;
+      if(this.props.gender.selected == 'male'){
+        count = this.props.names.maleCount;
+      } else {
+        count = this.props.names.femaleCount;
+      }
+
+      return (this.props.names.accepted.length + this.props.names.rejected.length) >= count;  
     }
 
     rejectName() {
