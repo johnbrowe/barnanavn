@@ -9,6 +9,7 @@ class Logo extends Component {
         viewBox="0 0 411 193"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className="logo-size"
       >
         <g filter="url(#filter0_i)">
           <path
