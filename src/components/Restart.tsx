@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import MdBack from 'react-icons/lib/md/keyboard-arrow-left';
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
+import React, {Component} from 'react'
+import MdBack from 'react-icons/lib/md/keyboard-arrow-left'
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router'
 
-import { selectGender } from '../actions/gender-actions'
-import { restart } from '../actions/name-actions'
+import {selectGender} from '../actions/gender-actions'
+import {restart} from '../actions/name-actions'
 import store from '../store.js'
 
 class Restart extends Component<any, any> {
@@ -15,20 +15,20 @@ class Restart extends Component<any, any> {
         this.props.history.push('/')
     }
 
-    static shouldDisplayRestart () {
+    static shouldDisplayRestart() {
         return window.location.pathname === '/' ? 'hide' : ''
     }
 
-    render () {
+    render() {
         return (
-      <div className={Restart.shouldDisplayRestart() + ' navbar'}>
-        <a className="restart" onClick={this.restart}>
-          <span className="back-icon">
-            <MdBack />
-          </span>{' '}
-          Byrja av nýggjum
-        </a>
-      </div>
+            <div className={Restart.shouldDisplayRestart() + ' navbar'}>
+                <a className="restart" onClick={this.restart}>
+                    <span className="back-icon">
+                        <MdBack />
+                    </span>{' '}
+                    Byrja av nýggjum
+                </a>
+            </div>
         )
     }
 }
