@@ -1,10 +1,15 @@
 import React, {Component} from 'react'
-import './../App.css'
-import Menu from './Menu'
 import {connect} from 'react-redux'
 
-class List extends Component {
-    constructor(props) {
+import './../App.css'
+import Menu from './Menu'
+
+interface Props {
+    accepted: any
+}
+
+class List extends Component<Props, any> {
+    constructor(props: Props) {
         super(props)
 
         // Bindings
@@ -29,7 +34,7 @@ class List extends Component {
                     </li>
                     {this.noneSelectedYetMsg()}
 
-                    {this.props.accepted.map((data, i) => {
+                    {this.props.accepted.map((data: any, i: number) => {
                         return <li key={i}>{data.name}</li>
                     })}
                 </ul>
@@ -38,7 +43,7 @@ class List extends Component {
     }
 }
 
-const mapStateToProps = function(store) {
+const mapStateToProps = (store: any) => {
     return {
         accepted: store.names.accepted
     }
