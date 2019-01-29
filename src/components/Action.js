@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import '../App.css'
 import {connect} from 'react-redux'
-import Name from './Name.js'
+import Name from './Name'
 import Description from './Description.js'
 import Progress from './Progress'
 import Buttons from './Buttons.js'
