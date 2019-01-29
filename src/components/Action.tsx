@@ -1,13 +1,19 @@
 import React, {Component} from 'react'
-import '../App.css'
 import {connect} from 'react-redux'
-import Name from './Name'
-import Description from './Description'
-import Progress from './Progress'
-import Buttons from './Buttons'
-import Menu from './Menu'
 
-class Action extends Component {
+import '../App.css'
+
+import Buttons from './Buttons'
+import Description from './Description'
+import Menu from './Menu'
+import Name from './Name'
+import Progress from './Progress'
+
+interface Props {
+    gender: any
+}
+
+class Action extends Component<Props, any> {
     render() {
         return (
             <section>
@@ -29,7 +35,7 @@ class Action extends Component {
     }
 }
 
-const mapStateToProps = function(store) {
+const mapStateToProps = (store: any) => {
     return {
         gender: store.gender
     }
