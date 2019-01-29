@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux'
-import nameReducer from './name-reducer'
+
 import genderReducer from './gender-reducer'
+import nameReducer from './name-reducer'
 
 const allReducers = {
     names: nameReducer,
