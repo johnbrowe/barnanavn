@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import Name from './Name'
 import Description from './Description'
 import Progress from './Progress'
-import Buttons from './Buttons.js'
+import Buttons from './Buttons'
 import Menu from './Menu'
 
 class Action extends Component {
