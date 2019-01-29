@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import '../App.css';
-import { connect } from 'react-redux';
-import Name from './Name.js';
-import Description from './Description.js';
-import Progress from './Progress.js';
-import Buttons from './Buttons.js';
-import Menu from './Menu.js';
+import React, {Component} from 'react'
+import '../App.css'
+import {connect} from 'react-redux'
+import Name from './Name.js'
+import Description from './Description.js'
+import Progress from './Progress'
+import Buttons from './Buttons.js'
+import Menu from './Menu.js'
 
 class Action extends Component {
     render() {
@@ -13,27 +13,26 @@ class Action extends Component {
             <section>
                 <Menu />
                 <div className="name-box">
-                    { !this.props.gender.selected ?
-                        ""
-                        : <div>
+                    {!this.props.gender.selected ? (
+                        ''
+                    ) : (
+                        <div>
                             <Name />
                             <Description />
                         </div>
-                    }
-
+                    )}
                 </div>
                 <Buttons />
                 <Progress />
             </section>
-        );
+        )
     }
 }
 
-const mapStateToProps = function (store) {
+const mapStateToProps = function(store) {
     return {
         gender: store.gender
-    };
-};
+    }
+}
 
-export default connect(mapStateToProps)(Action);
-
+export default connect(mapStateToProps)(Action)
