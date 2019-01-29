@@ -5,7 +5,7 @@ import Name from './Name'
 import Description from './Description.js'
 import Progress from './Progress'
 import Buttons from './Buttons.js'
-import Menu from './Menu.js'
+import Menu from './Menu'
 
 class Action extends Component {
     render() {

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import './../App.css'
-import Menu from './Menu.js'
+import Menu from './Menu'
 
 interface Props {
     rejected: any
@@ -12,7 +12,7 @@ class RejectedList extends Component<Props, any> {
     constructor(props: any) {
         super(props)
 
-    // Bindings
+        // Bindings
         this.noneSelectedYetMsg = this.noneSelectedYetMsg.bind(this)
     }
 
@@ -26,19 +26,19 @@ class RejectedList extends Component<Props, any> {
 
     render() {
         return (
-      <section>
-        <Menu />
-        <ul>
-          <li>
-            <b>Nøvn:</b>
-          </li>
-          {this.noneSelectedYetMsg()}
+            <section>
+                <Menu />
+                <ul>
+                    <li>
+                        <b>Nøvn:</b>
+                    </li>
+                    {this.noneSelectedYetMsg()}
 
-          {this.props.rejected.map((data: any, i: any) => {
-              return <li key={i}>{data.name}</li>
-          })}
-        </ul>
-      </section>
+                    {this.props.rejected.map((data: any, i: any) => {
+                        return <li key={i}>{data.name}</li>
+                    })}
+                </ul>
+            </section>
         )
     }
 }
