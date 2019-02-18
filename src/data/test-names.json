@@ -1,0 +1,18 @@
+{
+    "male": [
+        {"name": "Absalon", "desc": "(Absalon, Absaloni, Absalons)", "id": "ya7nK"},
+        {"name": "Adolf", "desc": "[a:d-] (Adolf, Adolfi, Adolfs)", "id": "4y4EI"},
+        {"name": "Adrian", "desc": "[a:d-] (Adrian, Adriani, Adrians)", "id": "2jjJUu"},
+        {"name": "Adriel", "desc": "(Adriel, Adrieli, Adriels)\n", "id": "2jjJWu"}
+    ],
+    "female": [
+        {"name": "Aðalbjørg", "desc": "(Aðalbjørg, Aðalbjørg, Aðalbjargar)\n", "id": "ZUdeUC"},
+        {"name": "Aðalborg", "desc": "(Aðalborg, Aðalborg, Aðalborgar)", "id": "Z1ORUyG"},
+        {"name": "Aðalgunn", "desc": "(Aðalgunn, Aðalgunn, Aðalgunnar)", "id": "Z1ORf1c"},
+        {
+            "name": "Aðalheiður",
+            "desc": "(Aðalheiður/Aðalheiði, Aðalheiður/Aðalheiði, Aðalheiðar)",
+            "id": "28etC0"
+        }
+    ]
+}
