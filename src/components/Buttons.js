@@ -14,7 +14,8 @@ class Buttons extends Component {
     super(props);
 
     this.state = {
-      buttonDisable: false
+      buttonDisable: false,
+      buttonClicked: ""
     };
 
     // Bindings
@@ -38,7 +39,7 @@ class Buttons extends Component {
   }
 
   rejectName() {
-    this.disableButton();
+    this.disableButton("reject");
     store.dispatch(
       addRejectName(
         this.props.names[this.props.gender.selected][this.props.names.index]
@@ -48,7 +49,7 @@ class Buttons extends Component {
   }
 
   acceptName() {
-    this.disableButton();
+    this.disableButton("accept");
     store.dispatch(
       addAcceptName(
         this.props.names[this.props.gender.selected][this.props.names.index]
@@ -57,18 +58,23 @@ class Buttons extends Component {
     store.dispatch(increment());
   }
 
-  disableButton() {
+  disableButton(whichButton) {
     // Disable button
-    this.setState({ buttonDisable: true });
-    // Endable button again after x amount of seconds
-    setTimeout(() => this.setState({ buttonDisable: false }), 200);
+    this.setState({ buttonDisable: true, buttonClicked: whichButton });
+    // Enable button again after x amount of seconds
+    setTimeout(
+      () => this.setState({ buttonDisable: false, buttonClicked: "" }),
+      200
+    );
   }
 
   render() {
     return (
       <div className="buttons">
         <button
-          className="button button-no"
+          className={`button button-no ${
+            this.state.buttonClicked == "reject" ? "button-disabled" : ""
+          }`}
           disabled={this.isFinished() || this.state.buttonDisable}
           onClick={this.rejectName}
         >
@@ -76,7 +82,9 @@ class Buttons extends Component {
         </button>
         &nbsp;&nbsp;&nbsp;
         <button
-          className="button button-yes"
+          className={`button button-yes ${
+            this.state.buttonClicked == "accept" ? "button-disabled" : ""
+          }`}
           disabled={this.isFinished() || this.state.buttonDisable}
           onClick={this.acceptName}
         >

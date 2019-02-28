@@ -313,8 +313,7 @@ li .active {
   background-color: var(--fourth-color);
 }
 
-.button-yes:disabled,
-.button-no:disabled {
+.button-disabled {
   background-color: #44838334;
   cursor: not-allowed;
 }
