@@ -540,3 +540,26 @@ li .active {
         width: 33%;
     }
 }
+
+.list-counter {
+    font-size: 1.5rem;
+    font-size: var(--xs-size);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+    border-radius: 50%;
+    color: white;
+    opacity: 0.5;
+    line-height: 1;
+    text-align: ceter;
+    min-width: 20px;
+}
+
+.list-counter-no {
+    background: var(--fourth-color);
+}
+
+.list-counter-yes {
+    background: var(--third-color);
+}
