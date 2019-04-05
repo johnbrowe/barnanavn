@@ -3,56 +3,137 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
   line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 /* RESET END */
 
 :root {
-  --first-color: #000D29;
-  --second-color: rgba(0, 13, 41, 0.50);
-  --third-color: #118C8B;
-  --fourth-color: #F2746B;
+  --first-color: #000d29;
+  --second-color: rgba(0, 13, 41, 0.5);
+  --third-color: #118c8b;
+  --fourth-color: #f2746b;
   --xl-size: 57.665rem;
   --l-size: 25.629rem;
   --lm-size: 11.391rem;
@@ -62,22 +143,22 @@ table {
   --default-size: 1rem;
 }
 
-
 html {
   font-size: 5px;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 body {
-  font-family: 'Raleway', sans-serif;  
+  font-family: "Raleway", sans-serif;
   background-color: white;
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: left top;
-  height: 100vh; 
+  height: 100vh;
   width: 100%;
   font-size: var(--m-size);
   color: var(--first-color);
@@ -92,7 +173,7 @@ b {
 }
 
 h1 {
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   color: var(--first-color);
   font-size: var(--m-size);
   margin-bottom: var(--xs-size);
@@ -101,7 +182,7 @@ h1 {
 h1.display-name {
   font-size: var(--lm-size);
   margin-bottom: var(--s-size);
-  overflow-wrap: break-word;  
+  overflow-wrap: break-word;
 }
 
 .display-name-enter {
@@ -126,7 +207,7 @@ h1.display-name {
 ul.list {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;  
+  justify-content: space-around;
 }
 
 li {
@@ -141,20 +222,20 @@ li {
 /* Classes */
 .list li {
   display: inline-block;
-  margin:var(--s-size) 0 0 0;
+  margin: var(--s-size) 0 0 0;
   flex-grow: 1;
   width: 100%;
 }
 
 li .active {
-  font-weight: 700; 
+  font-weight: 700;
 }
 
 .name-box {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 45vh
+  height: 45vh;
 }
 
 .gender {
@@ -169,7 +250,7 @@ li .active {
 }
 
 .name-description {
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   color: var(--second-color);
   font-size: var(--s-size);
 }
@@ -210,7 +291,7 @@ li .active {
   color: #fff;
   border: 1px solid #999;
   border: transparent;
-  background-color: #E6E6E6;
+  background-color: #e6e6e6;
   text-decoration: none;
   border-radius: 0;
   cursor: pointer;
@@ -218,11 +299,23 @@ li .active {
 }
 
 .button-yes {
+  transition: background-color 0.4s ease-out;
   background-color: var(--third-color);
 }
 
+.button-yes:hover,
+.button-no:hover {
+  opacity: 0.9;
+}
+
 .button-no {
+  transition: background-color 0.4s ease-out;
   background-color: var(--fourth-color);
+}
+
+.button-disabled {
+  background-color: #44838334;
+  cursor: not-allowed;
 }
 
 .gender-box .buttons {
@@ -230,38 +323,37 @@ li .active {
 }
 
 .button.boy {
-  font-size: var(--s-size);  
+  font-size: var(--s-size);
   background-color: var(--third-color);
 }
 
 .button.girl {
-  font-size: var(--s-size); 
+  font-size: var(--s-size);
   background-color: var(--fourth-color);
 }
-
 
 /* Menu's */
 .navbar {
   text-align: center;
-  margin-top: var(--m-size);  
+  margin-top: var(--m-size);
 }
 
 .restart {
   color: var(--second-color);
   font-size: var(--s-size);
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .back-icon {
   color: var(--third-color);
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .tab-menu {
   display: flex;
   justify-content: space-evenly;
   border-bottom: 1px solid var(--second-color);
-  margin-bottom: var(--m-size);  
+  margin-bottom: var(--m-size);
 }
 
 .tab-menu li {
@@ -318,7 +410,7 @@ li .active {
 }
 
 .cross-fade-height {
-  transition: height .5s ease-in-out;
+  transition: height 0.5s ease-in-out;
 }
 
 .fade-wait-leave {
@@ -326,7 +418,7 @@ li .active {
 }
 .fade-wait-leave.fade-wait-leave-active {
   opacity: 0;
-  transition: opacity .4s ease-in;
+  transition: opacity 0.4s ease-in;
 }
 
 .fade-wait-enter {
@@ -335,11 +427,11 @@ li .active {
 .fade-wait-enter.fade-wait-enter-active {
   opacity: 1;
   /* Delay the enter animation until the leave completes */
-  transition: opacity .4s ease-in .6s;
+  transition: opacity 0.4s ease-in 0.6s;
 }
 
 .fade-wait-height {
-  transition: height .6s ease-in-out;
+  transition: height 0.6s ease-in-out;
 }
 
 @keyframes fadeInLeft {
@@ -358,7 +450,6 @@ li .active {
   animation-name: fadeInLeft;
 }
 
-
 @media (min-width: 500px) {
   html {
     font-size: 10px;
@@ -366,10 +457,10 @@ li .active {
 
   li {
     font-size: var(--s-size);
-  }  
+  }
 
   .list li {
-    margin:var(--xs-size) 0 0 0;
+    margin: var(--xs-size) 0 0 0;
     width: 50%;
   }
 
@@ -386,13 +477,12 @@ li .active {
   .navbar {
     text-align: left;
     margin-top: var(--xs-size);
-    margin-left: var(--m-size);  
+    margin-left: var(--m-size);
   }
 
   .restart {
     font-size: 2rem;
   }
-
 }
 
 @media (min-width: 900px) {
@@ -402,14 +492,13 @@ li .active {
 }
 
 @media (min-width: 1600px) {
-  
   html {
     font-size: 16px;
   }
 
   .restart {
     margin-left: var(--xs-size);
-    text-align: left;  
+    text-align: left;
     font-size: var(--xs-size);
   }
 
@@ -423,7 +512,7 @@ li .active {
 
   h1.display-name {
     font-size: var(--lm-size);
-    margin-bottom: var(--s-size);    
+    margin-bottom: var(--s-size);
   }
 
   .tab-menu {
@@ -433,7 +522,7 @@ li .active {
   .tab-menu li:nth-of-type(2) {
     border-left: 3px solid var(--second-color);
     border-right: 3px solid var(--second-color);
-  }  
+  }
 
   .list li {
     width: 33%;
