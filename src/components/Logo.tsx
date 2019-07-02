@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 class Logo extends Component {
     render() {
         return (
-            <svg xmlns="http://www.w3.org/2000/svg" width="921" height="108">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 921 108">
                 <g transform="translate(-13 -29)">
                     <use fill="#188C8B" xlinkHref="#path0_fill" />
                     <use fill="#F2746B" xlinkHref="#path1_fill" />
